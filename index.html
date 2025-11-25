@@ -1,177 +1,833 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotoCred - Formulário</title>
-    <link rel="stylesheet" href="public/tailwind.css">
-    <link  rel="stylesheet" href="src/styles.css"> 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        prefix: 'v2-',
+        corePlugins: { preflight: false }
+      }
+    </script>
+    <link rel="stylesheet" href="public/tailwind.css">   <!-- CSS gerado pelo Tailwind -->
+    <link rel="stylesheet" href="src/styles.css">        <!-- estilos gerais do projeto -->
 
-</head>
+  </head>
 
-<body class="min-h-svh flex items-stretch justify-center bg-brand p-6">
-    <div class="card max-w-[820px] w-full h-full flex flex-col">
+  <div id="loading-overlay" class="loading-overlay">
+    <span>Processando</span>
+  </div>
+
+  <body class="min-h-svh flex items-stretch justify-center bg-brand">
+    <div class="v1-shell">
+
+      <div class="card max-w-[820px] w-full flex flex-col">
         <div class="header">
-            <img class="img_logo" src="imagens/motocred_logo.avif" alt="Logo MotoCred">
+          <img class="img_logo" src="imagens/motocred_logo.avif" alt="Logo MotoCred">
         </div>
 
         <div class="hero">
-            <h3 id="titulo_pagina">Formulário de Financiamento</h3>
+          <h3 id="titulo_pagina">Formulário de Financiamento</h3>
         </div>
 
         <div id="etapas_processo" aria-label="Etapas do processo">
-            <div class="step-tabs" role="tablist" aria-label="Progresso do formulário">
-                <button type="button" class="step-tab is-active" id="tab-step-1" data-step="1" role="tab" aria-controls="step-1" aria-selected="true">
-                    <span>Identificação</span>
-                </button>
-                <button type="button" class="step-tab" id="tab-step-2" data-step="2" role="tab" aria-controls="step-2" aria-selected="false" disabled>
-                    <span>Dados do Vendedor</span>
-                </button>
-                <button type="button" class="step-tab" id="tab-step-3" data-step="3" role="tab" aria-controls="step-3" aria-selected="false" disabled>
-                    <span>Dados do Cliente</span>
-                </button>
-                <button type="button" class="step-tab" id="tab-step-4" data-step="4" role="tab" aria-controls="step-4" aria-selected="false" disabled>
-                    <span>Dados da Venda</span>
-                </button>
+          <div class="step-tabs" role="tablist" aria-label="Progresso do formulário">
+            <button type="button" class="step-tab is-active" id="tab-step-1" data-step="1" role="tab" aria-controls="step-1" aria-selected="true">
+              <span>Identificação</span>
+            </button>
+            <button type="button" class="step-tab" id="tab-step-2" data-step="2" role="tab" aria-controls="step-2" aria-selected="false" disabled>
+              <span>Dados do Vendedor</span>
+            </button>
+            <button type="button" class="step-tab" id="tab-step-3" data-step="3" role="tab" aria-controls="step-3" aria-selected="false" disabled>
+              <span>Dados do Cliente</span>
+            </button>
+            <button type="button" class="step-tab" id="tab-step-4" data-step="4" role="tab" aria-controls="step-4" aria-selected="false" disabled>
+              <span>Dados da Venda</span>
+            </button>
 
+          </div>
+        </div>
+
+        <main>
+          <form id="formCadastro">
+
+            <div class="form-steps">
+
+              <!--ETAPA 1-->
+              <section class="form-step is-active" data-step="1" id="step-1" role="tabpanel" aria-labelledby="tab-step-1">
+                <fieldset class="fieldset fieldset-radio">
+                  <legend class="legend">Você é:</legend>
+                  <div class="radio-options radio-options-horizontal">                                <label class="inline-option">
+                      <input class="sr-only peer" type="radio" name="tipo_usuario" value="comprador" required>
+                      <span class="radio-pill peer-checked:radio-pill-checked">Comprador</span>
+                    </label>
+                    <label class="inline-option">
+                      <input class="sr-only peer" type="radio" name="tipo_usuario" value="vendedor">
+                      <span class="radio-pill peer-checked:radio-pill-checked">Vendedor</span>
+                    </label>
+                  </div>
+                </fieldset>
+              </section>
+
+              <!--ETAPA 2-->
+              <section class="form-step" data-step="2" id="step-2" role="tabpanel" aria-labelledby="tab-step-2" aria-hidden="true">
+                <fieldset class="fieldset" id="dados_vendedor">
+                  <legend class="legend">Dados do Vendedor</legend>
+
+                  <label for="loja">Loja/Concessionária:</label>
+                  <select class="input" id="loja" name="loja" required>
+                    <option value="">Selecione</option>
+                    <option value="Moto Certa">Moto Certa</option>
+                    <option value="Carbumotos">Carbumotos</option>
+                    <option value="Fina Motos">Fina Motos</option>
+                    <option value="Charles Motos">Charles Motos</option>
+                    <option value="Brasil Motos">Brasil Motos</option>
+                    <option value="RN Motos">RN Motos</option>
+                    <option value="Flavio Giu Motos">Flavio Giu Motos</option>
+                    <option value="Sertão Motos">Sertão Motos</option>
+                    <option value="Shineray Goianinha">Shineray Goianinha</option>
+                  </select>
+
+                  <label for="nome_vendedor">Nome do Vendedor:</label>
+                  <input class="input" type="text" id="nome_vendedor" name="nome_vendedor" required>
+
+                  <label for="email_vendedor">Email do Vendedor:</label>
+                  <input class="input" type="email" id="email_vendedor" name="email_vendedor" required>
+                </fieldset>
+              </section>
+
+              <!--ETAPA 3-->
+              <section class="form-step" data-step="3" id="step-3" role="tabpanel" aria-labelledby="tab-step-3" aria-hidden="true">
+                <fieldset class="fieldset" id="dados_cliente">
+                  <legend class="legend">Dados do Cliente</legend>
+
+                  <label for="nome_cliente">Nome do Cliente:</label>
+                  <input class="input" type="text" id="nome_cliente" name="nome_cliente" required>
+
+                  <label for="cpf">CPF:</label>
+                  <input class="input" type="text" id="cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" required>
+
+                  <span class="radio-label">Possui CNH?</span>
+                  <div class="radio-options radio-options-horizontal">
+                    <label class="inline-option">
+                      <input class="sr-only peer" type="radio" name="cnh" value="sim" required>
+                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Sim</span>
+                    </label>
+                    <label class="inline-option">
+                      <input class="sr-only peer" type="radio" name="cnh" value="nao">
+                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Não</span>
+                    </label>
+                  </div>
+
+                  <label for="email_cliente">Email:</label>
+                  <input class="input" type="email" id="email_cliente" name="email_cliente" required>
+
+                  <label for="telefone">Telefone:</label>
+                  <input class="input" type="tel" id="telefone" name="telefone" required>
+
+                  <label for="renda_mensal">Renda mensal (valor que possa ser comprovado):</label>
+                  <input class="input" type="text" inputmode="numeric" id="renda_mensal" name="renda_mensal" required>
+                </fieldset>
+              </section>
+
+              <!-- ETAPA 4 — DADOS DA VENDA -->
+              <section class="form-step" data-step="4" id="step-4" role="tabpanel" aria-labelledby="tab-step-4" aria-hidden="true">
+                <fieldset class="fieldset" id="dados_venda">
+                  <legend class="legend">Dados da Venda</legend>
+
+                  <div class="grid">
+                    <div>
+                      <label for="valor_moto" class="font-medium">Valor da moto</label>
+                      <input id="valor_moto" name="valor_moto" inputmode="decimal" class="input" required />
+                    </div>
+
+                    <div>
+                      <label for="valor_entrada" class="font-medium">Valor de entrada</label>
+                      <input id="valor_entrada" name="valor_entrada" inputmode="decimal" class="input" required />
+
+                    </div>
+                  </div>
+
+                  <!-- Mensagem de erro DENTRO do bloco escuro -->
+                  <p id="erro_dados_venda"
+                     class="hidden mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                     role="alert" aria-live="polite"></p>
+                </fieldset>
+              </section>
             </div>
-            <span class="step-current-label" aria-live="polite">Identificação</span>
-        </div>
 
-        <div class="main">
-            <form id="formCadastro" method="post" action="#">
+            <div class="form-navigation">
+              <button type="button" class="btn-secondary nav-prev" aria-label="Voltar para a etapa anterior" disabled>Voltar</button>
+              <div class="nav-button-group">
+                <button type="button" class="btn-primary nav-next" aria-label="Avançar para a próxima etapa">Próximo</button>
+              </div>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div> <!--v1 shell-->
 
-                <div class="form-steps">
-                    <section class="form-step is-active" data-step="1" id="step-1" role="tabpanel" aria-labelledby="tab-step-1">
-                        <fieldset class="fieldset fieldset-radio">
-                            <legend class="legend">Você é:</legend>
-                            <div class="radio-options radio-options-horizontal">                                <label class="inline-option">
-                                    <input class="sr-only peer" type="radio" name="tipo_usuario" value="comprador" required>
-                                    <span class="radio-pill peer-checked:radio-pill-checked">Comprador</span>
-                                </label>
-                                <label class="inline-option">
-                                    <input class="sr-only peer" type="radio" name="tipo_usuario" value="vendedor">
-                                    <span class="radio-pill peer-checked:radio-pill-checked">Vendedor</span>
-                                </label>
-                            </div>
-                        </fieldset>
-                    </section>
+    <!--PAGINA DE NEGADO - SIMULAÇÃO-->
+    <section id="v2-pagina-negado"
+             class="v2-hidden v2-wrapper v2-fixed v2-inset-0 v2-z-50 v2-overflow-auto
+                    v2-bg-[#D9D9D9]
+                    v2-flex v2-items-center v2-justify-center
+                    v2-pt-8 v2-pb-8 v2-pr-14 v2-pl-14">
 
-                    <section class="form-step" data-step="2" id="step-2" role="tabpanel" aria-labelledby="tab-step-2" aria-hidden="true">
-                        <fieldset class="fieldset" id="dados_vendedor">
-                            <legend class="legend">Dados do Vendedor</legend>
+      <!--QUADRADO BRANCO-->
+      <div class="v2-bg-white v2-rounded-2xl
 
-                            <label for="loja">Loja/Concessionária:</label>
-                            <select class="input" id="loja" name="loja" required>
-                                <option value="">Selecione</option>
-                                <option value="Moto Certa">Moto Certa</option>
-                                <option value="Carbumotos">Carbumotos</option>
-                                <option value="Fina Motos">Fina Motos</option>
-                                <option value="Charles Motos">Charles Motos</option>
-                                <option value="Brasil Motos">Brasil Motos</option>
-                                <option value="RN Motos">RN Motos</option>
-                                <option value="Flavio Giu Motos">Flavio Giu Motos</option>
-                                <option value="Sertão Motos">Sertão Motos</option>
-                                <option value="Shineray Goianinha">Shineray Goianinha</option>
-                            </select>
+v2-w-full v2-max-w-2xl v2-min-h-[260px]
 
-                            <label for="nome_vendedor">Nome do Vendedor:</label>
-                            <input class="input" type="text" id="nome_vendedor" name="nome_vendedor" required>
+v2-p-6 v2-flex v2-flex-col v2-items-center v2-justify-start
+v2-space-y-16">
+        <!--v2-space-y-16 VERSUS v2-space-y-10 -->
 
-                            <label for="email_vendedor">Email do Vendedor:</label>
-                            <input class="input" type="email" id="email_vendedor" name="email_vendedor" required>
-                        </fieldset>
-                    </section>
 
-                    <section class="form-step" data-step="3" id="step-3" role="tabpanel" aria-labelledby="tab-step-3" aria-hidden="true">
-                        <fieldset class="fieldset" id="dados_cliente">
-                            <legend class="legend">Dados do Cliente</legend>
+        <header class="v2-flex v2-flex-col v2-items-center v2-space-y-3">
+          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 h-auto">
+          <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B]">Simulação de Financiamento</h1>
+        </header>
 
-                            <label for="nome_cliente">Nome do Cliente:</label>
-                            <input class="input" type="text" id="nome_cliente" name="nome_cliente" required>
+        <main class="v2-flex v2-flex-col v2-items-left v2-space-y-16 v2-w-full v2-pb-14">
+          <!--v2-items-left VERSUS v2-items-center ||  v2-space-y-16 VERSUS v2-space-y-10 -->
 
-                            <label for="cpf">CPF:</label>
-                            <input class="input" type="text" id="cpf" name="cpf" inputmode="numeric" autocomplete="off" maxlength="14" required>
+          <!--MENSAGEM DE NEGADO-->
+          <div class="v2-relative v2-mt-4 v2-w-full
+                      v2-bg-[#D11B1B]/15
+                      v2-rounded-[10px]
+                      v2-border-l-[2px]
+                      v2-border-[#D11B1B]
+                      before:content-''
+                      before:absolute
+                      before:top-[10px]
+                      before:bottom-[10px]
+                      before:left-[-2px]
+                      before:w-[2px]
+                      before:bg-[#D9D9D9]
+                      v2-pt-2 v2-pb-2 v2-pl-4">
 
-                            <span class="radio-label">Possui CNH?</span>
-                            <div class="radio-options radio-options-horizontal">
-                                <label class="inline-option">
-                                    <input class="sr-only peer" type="radio" name="cnh" value="sim" required>
-                                    <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Sim</span>
-                                </label>
-                                <label class="inline-option">
-                                    <input class="sr-only peer" type="radio" name="cnh" value="nao">
-                                    <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Não</span>
-                                </label>
-                            </div>
+            <p class="v2-font-bold">Infelizmente, seu crédito foi negado no momento.</p>
+          </div>
 
-                            <label for="email_cliente">Email:</label>
-                            <input class="input" type="email" id="email_cliente" name="email_cliente" required>
+          <!--TEXTO NA TELA-->
+          <div class="v2-text-left v2-font-medium">
+            <!--v2-items-left VERSUS v2-items-center -->
 
-                            <label for="telefone">Telefone:</label>
-                            <input class="input" type="tel" id="telefone" name="telefone" required>
+            <p>
+            Você poderá realizar uma nova consulta após um período de
+            <span class="v2-text-[#F2600B] v2-font-bold">3 meses</span>.<br>
+            Agradecemos pelo seu interesse.
+            </p>
+          </div>
+        </main>
+        <footer class="v2-text-black/50 v2-text-xs">
+          <p>
+          © 2025 MotoCred. Todos os direitos reservados.
+          </p>
+        </footer>
+      </div>
+    </section>
+    <!--FIM PAGINA NEGADO-->
 
-                            <label for="renda_mensal">Renda mensal (valor que possa ser comprovado):</label>
-                            <input class="input" type="text" inputmode="numeric" id="renda_mensal" name="renda_mensal" required>
-                        </fieldset>
-                    </section>
+    <!--PAGINA SIMULAÇÃO - APROVADO-->
+    <section id="v2-pagina-aprovado"
+             class="v2-hidden v2-wrapper v2-fixed v2-inset-0 v2-z-50 v2-overflow-auto
+                    v2-bg-[#D9D9D9]
+                    v2-flex v2-items-center v2-justify-center
+                    v2-pt-8 v2-pb-8 v2-pr-8 v2-pl-8">
 
-                    <!-- ETAPA 4 — DADOS DA VENDA -->
-                    <section class="form-step" data-step="4" id="step-4" role="tabpanel" aria-labelledby="tab-step-4" aria-hidden="true">
-                        <fieldset class="fieldset" id="dados_venda">
-                            <legend class="legend">Dados da Venda</legend>
+      <!--QUADRADO BRANCO-->
+      <div class="v2-bg-white v2-rounded-2xl
 
-                            <div class="grid">
-                                <div>
-                                    <label for="valor_moto" class="font-medium">Valor da moto</label>
-                                    <input id="valor_moto" inputmode="decimal" class="input" required />
-                                </div>
+v2-w-full v2-max-w-2xl v2-min-h-[260px]
 
-                                <div>
-                                    <label for="valor_entrada" class="font-medium">Valor de entrada</label>
-                                    <input id="valor_entrada" inputmode="decimal" class="input" required />
+v2-p-6 v2-flex v2-flex-col v2-items-center v2-justify-start
+v2-space-y-10">
+        <!--v2-space-y-16 VERSUS v2-space-y-10 -->
 
-                                </div>
-                            </div>
+        <header class="v2-flex v2-flex-col v2-items-center v2-space-y-3">
+          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 h-auto">
+          <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B] v2-text-center">Simulação de Financiamento</h1>
+        </header>
 
-                            <!-- Mensagem de erro DENTRO do bloco escuro -->
-                            <p id="erro_dados_venda"
-                                class="hidden mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
-                                role="alert" aria-live="polite"></p>
-                        </fieldset>
-                    </section>
-                </div>
-                <div class="form-navigation">
-                    <button type="button" class="btn-secondary nav-prev" aria-label="Voltar para a etapa anterior" disabled>Voltar</button>
-                    <div class="nav-button-group">
-                        <button type="button" class="btn-primary nav-next" aria-label="Avançar para a próxima etapa">Próximo</button>
+        <main class="v2-flex v2-flex-col v2-items-left v2-space-y-16 v2-w-full v2-pb-6">
+          <!--v2-items-left VERSUS v2-items-center ||  v2-space-y-16 VERSUS v2-space-y-10 -->
+
+          <!--MENSAGEM DE APROVADO-->
+          <div class="v2-relative v2-mt-4 v2-w-full
+                      v2-bg-[#0CAD11]/15
+                      v2-rounded-[10px]
+                      v2-border-l-[2px]
+                      v2-border-[#0CAD11]
+                      before:content-''
+                      before:absolute
+                      before:top-[10px]
+                      before:bottom-[10px]
+                      before:left-[-2px]
+                      before:w-[2px]
+                      before:bg-[#0CAD11]
+                      v2-pt-2 v2-pb-2 v2-pl-4
+                      v2-space-y-1">
+
+            <p class="v2-font-bold">Parabéns! Você foi pré-aprovado.</p>
+            <p class="v2-text-black/60 v2-text-xs">Ajuste os valores e veja as parcelas em tempo real.</p>
+          </div>
+
+          <!--RANGE DE VALORES-->
+          <div class="v2-flex v2-flex-col v2-space-y-4">
+            <div>
+              <div class="v2-flex v2-flex-row v2-justify-between">
+                <label for="valor moto" class="v2-font-medium v2-text-sm"> Valor da moto:</label>
+                <span class="v2-inline-flex v2-gap-1 v2-text-sm v2-font-medium v2-text-[#1D46CE]">
+                  <span>R$</span>
+                  <span id="valor-moto-num">0</span>
+                </span>
+              </div>
+              <input type="range" id="valor-moto" name="valor-moto" step="50" min="0" data-hard-min="8000" max="60000" value="8000"
+                                                                                                                       class="v2-range">
+            </div>
+
+            <div>
+              <div class="v2-flex v2-flex-row v2-justify-between">
+                <label for="valor entrada" class="v2-font-medium v2-text-sm"> Valor da entrada:</label>
+                <span class="v2-inline-flex v2-gap-1 v2-text-sm v2-font-medium v2-text-[#0CAD11]">
+                  <span>R$</span>
+                  <span id="valor-entrada-num">0</span>
+                </span>
+              </div>
+              <input type="range" id="valor-entrada" name="valor-entrada" step="50" min="0" data-hard-min="4000" max="60000" value="4000"
+                                                                                                                             class="v2-range">
+            </div>
+
+            <hr>
+            <div class="v2-flex v2-flex-row v2-justify-between">
+              <label for="valor financiado" class="v2-font-medium v2-text-sm"> Valor total financiado:</label>
+              <span class="v2-inline-flex v2-gap-1 v2-text-sm v2-font-medium">
+                <span>R$</span>
+                <span id="valor-financiado-num">0</span>
+              </span>
+            </div>
+
+          </div>
+          <!--FIM DO RANGE-->
+
+          <!--PARCELAS-->
+          <div class="v2-w-full v2-flex md:v2-flex-row v2-gap-2 justify-center v2-flex-col v2-pl-6 v2-pr-6 md:v2-p-0">
+
+            <button id="btn-parcela-12x" data-prazo="12" type="button" aria-pressed="false"
+                                                                       class="v2-group
+                                                                              v2-bg-[#D9D9D9] v2-p-4 v2-rounded-[10px] v2-flex-1 md:v2-max-w-[202px]
+                                                                              v2-w-full
+                                                                              v2-transition-all v2-duration-300 v2-ease-in-out
+                                                                              hover:v2-bg-[#F2600B] hover:v2-scale-105
+                                                                              aria-pressed:v2-bg-[#F2600B] aria-pressed:v2-scale-105
+                                                                              v2-pl-6 v2-pr-6
+
+v2-flex v2-flex-row v2-justify-between v2-items-baseline
+md:v2-flex-col md:v2-justify-center md:v2-items-center ">
+
+              <div class="v2-flex v2-flex-row v2-items-baseline v2-items-end md:v2-flex-col md:v2-items-center ">
+                <span class="v2-font-semibold v2-text-4xl v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">12x</span>
+
+                <span class="v2-hidden md:v2-block"></span> <!-- <br> ocorrendo somente em desktop -->
+                <span class="v2-inline md:v2-hidden">&nbsp;</span> <!-- &nbsp; ocorrendo somente em desktop -->
+
+                <span class="v2-text-xs v2-text-black/50 v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">meses</span>
+
+                <span class="v2-hidden md:v2-block"></span>
+              </div>
+
+              <span class="valor-parcela v2-font-medium v2-text-xl v2-text-[#F2600B]
+                           v2-transition-all v2-duration-300
+                           group-hover:v2-text-white
+                           group-aria-pressed:v2-text-white md:v2-mt-2">R$00,00</span>
+
+            </button>
+
+            <button id="btn-parcela-24x" data-prazo="24" type="button" aria-pressed="false"
+                                                                       class="v2-group
+                                                                              v2-bg-[#D9D9D9] v2-p-4 v2-rounded-[10px] v2-flex-1 md:v2-max-w-[202px]
+                                                                              v2-w-full
+                                                                              v2-transition-all v2-duration-300 v2-ease-in-out
+                                                                              hover:v2-bg-[#F2600B] hover:v2-scale-105
+                                                                              aria-pressed:v2-bg-[#F2600B] aria-pressed:v2-scale-105
+                                                                              v2-pl-6 v2-pr-6
+
+v2-flex v2-flex-row v2-justify-between v2-items-baseline
+md:v2-flex-col md:v2-justify-center md:v2-items-center ">
+
+              <div class="v2-flex v2-flex-row v2-items-baseline v2-items-end md:v2-flex-col md:v2-items-center ">
+                <span class="v2-font-semibold v2-text-4xl v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">24x</span>
+
+                <span class="v2-hidden md:v2-block"></span> <!-- <br> ocorrendo somente em desktop -->
+                <span class="v2-inline md:v2-hidden">&nbsp;</span> <!-- &nbsp; ocorrendo somente em desktop -->
+
+                <span class="v2-text-xs v2-text-black/50 v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">meses</span>
+
+                <span class="v2-hidden md:v2-block"></span>
+              </div>
+
+              <span class="valor-parcela v2-font-medium v2-text-xl v2-text-[#F2600B]
+                           v2-transition-all v2-duration-300
+                           group-hover:v2-text-white
+                           group-aria-pressed:v2-text-white md:v2-mt-2">R$00,00</span>
+
+            </button>
+
+            <button id="btn-parcela-36x" data-prazo="36" type="button" aria-pressed="false"
+                                                                       class="v2-group
+                                                                              v2-bg-[#D9D9D9] v2-p-4 v2-rounded-[10px] v2-flex-1 md:v2-max-w-[202px]
+                                                                              v2-w-full
+                                                                              v2-transition-all v2-duration-300 v2-ease-in-out
+                                                                              hover:v2-bg-[#F2600B] hover:v2-scale-105
+                                                                              aria-pressed:v2-bg-[#F2600B] aria-pressed:v2-scale-105
+                                                                              v2-pl-6 v2-pr-6
+
+v2-flex v2-flex-row v2-justify-between v2-items-baseline
+md:v2-flex-col md:v2-justify-center md:v2-items-center ">
+
+              <div class="v2-flex v2-flex-row v2-items-baseline v2-items-end md:v2-flex-col md:v2-items-center ">
+                <span class="v2-font-semibold v2-text-4xl v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">36x</span>
+
+                <span class="v2-hidden md:v2-block"></span> <!-- <br> ocorrendo somente em desktop -->
+                <span class="v2-inline md:v2-hidden">&nbsp;</span> <!-- &nbsp; ocorrendo somente em desktop -->
+
+                <span class="v2-text-xs v2-text-black/50 v2-transition-all v2-duration-300
+                             group-hover:v2-text-white
+                             group-aria-pressed:v2-text-white">meses</span>
+
+                <span class="v2-hidden md:v2-block"></span>
+              </div>
+              <span class="valor-parcela v2-font-medium v2-text-xl v2-text-[#F2600B]
+                           v2-transition-all v2-duration-300
+                           group-hover:v2-text-white
+                           group-aria-pressed:v2-text-white md:v2-mt-2">R$00,00</span>
+
+            </button>
+
+          </div>
+
+          <input type="hidden" name="parcelas" id="parcelas-escolhida">
+
+          <div class="v2-w-full">
+            <button id="btn-analise-final" class="v2-bg-black v2-w-full v2-rounded-[10px] v2-p-2">
+              <span class="v2-font-semibold v2-text-white v2-text-base">ANÁLISE FINAL</span>
+            </button>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!--FIM PAGINA SIMULAÇÃO-->
+
+
+    <section id="form-final" class=" v2-wrapper v2-flex v2-flex-col v2-items-center v2-justify-center v2-w-full v2-p-6 v2-bg-[#D9D9D9] v2-min-h-screen">
+      <div class="v2-bg-white v2-rounded-2xl
+
+v2-w-full v2-max-w-2xl v2-min-h-[260px]
+
+v2-p-6 v2-flex v2-flex-col v2-items-center v2-justify-start
+v2-space-y-10">
+        <div class="v2-w-full">
+          <div class="header">
+            <img class="img_logo" src="imagens/motocred_logo.avif" alt="Logo MotoCred">
+          </div>
+          <div class="hero">
+            <h3 id="titulo_pagina">Formulário de Financiamento</h3>
+          </div>
+
+          <div class="final-stepper v2-flex v2-gap-8 v2-mb-12" role="tablist" aria-label="Progresso do formulário final">
+            <button type="button" class="final-step-tab is-active" data-final-step="final_dados_cliente" data-label="Dados do Cliente" aria-label="Dados do Cliente">
+              <span>Dados do Cliente</span>
+            </button>
+            <button type="button" class="final-step-tab" data-final-step="final_documentacao" data-label="Documentação" aria-label="Documentação">
+              <span>Documentação</span>
+            </button>
+            <button type="button" class="final-step-tab" data-final-step="final_referencias" data-label="Referências" aria-label="Referências">
+              <span>Referências</span>
+            </button>
+          </div>
+          <!--<span class="final-step-current-label" aria-live="polite">Dados do Cliente</span>-->
+
+
+          <form id="formFinal" class="v2-w-full v2-space-y-6">
+            <input type="hidden" name="submission_id" id="final_submission_id">
+            <!--DADOS-->
+            <section id="final_dados_cliente" class="v2-hidden form-step v2-flex v2-flex-col v2-space-y-4 v2-items-center v2-justify-center ">
+
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Dados do Cliente
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="final_nome_cliente" class="">Nome Completo:</label>
+                    <input type="text" disabled id="final_nome_cliente" name="final_nome_cliente"
+                                                                        class="v2-border v2-border-gray-300 v2-bg-gray-100 v2-text-gray-500 v2-opacity-100 v2-rounded-2xl v2-w-full v2-visible"
+                                                                        placeholder="">
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="final_cpf" class="">CPF:</label>
+                      <input type="text" id="final_cpf" name="final_cpf" class="v2-rounded-2xl v2-w-full
+                                   v2-border v2-border-gray-300 v2-bg-gray-100 v2-text-gray-500 v2-opacity-100 v2-visible"
+                                                                         placeholder="000.000.000-00" disabled>
                     </div>
-                </div>
-            </form>
-            <section id="tela_confirmacao" class="hidden" role="status" aria-live="polite" tabindex="-1">
-                <div class="confirmacao-wrap">
-                    <div class="flex items-center justify-center p-8">
-                        <div class="text-center max-w-lg">
-                            <p id="texto-confirmacao" class="mb-6">
-                            Formulário enviado com sucesso!
-                            </p>
-                            <p>
-                            Você receberá um email com o resultado da sua simulação.    
-                            </p>
-                        <img 
-                            src="imagens/Check-mark.png" 
-                            alt="Símbolo de Confirmação" 
-                            class="check-icon" 
+                    <div class="v2-w-1/2">
+                      <label for="final_telefone" class="">Telefone:</label>
+                      <input type="tel" id="final_telefone" name="final_telefone" class="v2-rounded-2xl v2-w-full
+                                   v2-border v2-border-gray-300 v2-bg-gray-100 v2-text-gray-500 v2-opacity-100 v2-visiblel" disabled>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="final_email_cliente" class="v2-font-medium">E-Mail:</label>
+                    <input
+                        type="email"
+                        id="final_email_cliente"
+                        name="final_email_cliente"
+                        class="v2-rounded-2xl v2-w-full v2-border v2-border-gray-300 v2-bg-gray-100 v2-text-gray-500 v2-opacity-100 v2-visible"
+                        disabled
                         >
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    </div>
+                  </div>
 
-    <script src="script.js"></script>
+                    <div class="v2-w-full">
+                      <label for="estado_civil" class="v2-font-medium">Estado Civil:</label>
+                      <select
+                          id="estado_civil"
+                          name="estado_civil"
+                          class="v2-rounded-2xl v2-w-full"
+                          required
+                          >
+                          <option value="">Selecione</option>
+                          <option value="Solteiro">Solteiro(a)</option>
+                          <option value="Casado">Casado(a)</option>
+                          <option value="Viúvo">Viúvo(a)</option>
+                          <option value="Divorciado">Divorciado(a)</option>
+                          <option value="União Estável">União Estável</option>
+                      </select>
+                    </div>
+
+                    <div class="v2-flex v2-w-full v2-gap-4">
+
+                      <div class="v2-w-1/2">
+                        <label for="residencia" class="v2-font-medium">Tipo de Residência:</label>
+                        <select
+                            id="residencia"
+                            name="residencia"
+                            class="v2-rounded-2xl v2-w-full"
+                            required
+                            >
+                            <option value="">Selecione</option>
+                            <option value="Própria">Própria</option>
+                            <option value="Alugada">Alugada</option>
+                            <option value="Casa de Parente">Casa de Parente</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                      </div>
+
+                      <div class="v2-w-1/2">
+                        <label for="tempo_residencia" class="v2-font-medium">Tempo Morando nessa Residência:</label>
+                        <input
+                            type="text"
+                            id="tempo_residencia"
+                            name="tempo_residencia"
+                            class="v2-rounded-2xl v2-w-full v2-visible"
+                            required
+                            >
+                      </div>
+                    </div>
+                    <div>
+                      <label for="profissao" class="">Profissão:</label>
+                      <input type="text" id="profissao" name="profissao" class="v2-rounded-2xl v2-w-full"
+                                                                         placeholder="Ex.: entregador na 99/Uber; vendedor de maquiagem" required>
+                    </div>
+
+                </div>
+              </fieldset>
+
+
+            </section>
+
+            <!--DOCUMENTOS-->
+            <section id="final_documentacao" class="v2-hidden v2-form-step v2-is-active v2-flex v2-flex-col v2-space-y-4 v2-items-center v2-justify-center">
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative v2-w-full">
+                <legend class="v2-absolute v2--top-3 v2-left-6 v2-text-[#F2600B]
+                               v2-text-base v2-font-semibold v2-leading-none v2-px-2 v2-py-0.5">
+                  Documentação
+                </legend>
+
+                <div class="v2-space-y-4">
+                  <div>
+                    <label class="v2-font-medium" for="v2-file-doc-id">Documento de Identificação (de até 10 anos):</label>
+                    <input
+                        id="v2-file-doc-id"
+                        name="file-doc-id"
+                        type="file"
+                        accept="application/pdf"
+                        class="v2-w-full v2-text-sm
+                               v2-text-gray-800
+                               v2-border v2-border-gray-300 v2-rounded-2xl v2-cursor-pointer
+                               v2-bg-gray-50
+                               file:v2-mr-3
+                               file:v2-py-2 file:v2-px-4
+                               file:v2-rounded-l-lg file:v2-rounded-r-none
+                               file:v2-border-0
+                               file:v2-text-sm
+                               file:v2-font-medium
+                               file:v2-bg-[#A5A3A3] file:v2-text-white
+                               hover:file:v2-bg-[#999898]"
+                        required>
+                    <p class="hint-text v2-text-sm v2-text-black/60 v2-mt-1 v2-ml-2">Apenas arquivos .PDF</p>
+                  </div>
+
+                  <div>
+                    <label class="v2-font-medium" for="v2-file-extrato">Extrato Bancário (de até 3 meses):</label>
+                    <input
+                        id="v2-file-extrato"
+                        name="file-extrato"
+                        type="file"
+                        accept="application/pdf"
+                        class="v2-w-full v2-text-sm
+                               v2-text-gray-800
+                               v2-border v2-border-gray-300 v2-rounded-2xl v2-cursor-pointer
+                               v2-bg-gray-50
+                               file:v2-mr-3
+                               file:v2-py-2 file:v2-px-4
+                               file:v2-rounded-l-lg file:v2-rounded-r-none
+                               file:v2-border-0
+                               file:v2-text-sm
+                               file:v2-font-medium
+                               file:v2-bg-[#A5A3A3] file:v2-text-white
+                               hover:file:v2-bg-[#999898]"
+                        required>
+                    <p class="hint-text v2-text-sm v2-text-black/60 v2-mt-1 v2-ml-2">Apenas arquivos .PDF</p>
+                  </div>
+
+                  <div>
+                    <label class="v2-font-medium" for="v2-file-residencia">Comprovante de Residência (no nome do comprador):</label>
+                    <input
+                        id="v2-file-residencia"
+                        name="file-residencia"
+                        type="file"
+                        accept="application/pdf"
+                        class="v2-w-full v2-text-sm
+                               v2-text-gray-800
+                               v2-border v2-border-gray-300 v2-rounded-2xl v2-cursor-pointer
+                               v2-bg-gray-50
+                               file:v2-mr-3
+                               file:v2-py-2 file:v2-px-4
+                               file:v2-rounded-l-lg file:v2-rounded-r-none
+                               file:v2-border-0
+                               file:v2-text-sm
+                               file:v2-font-medium
+                               file:v2-bg-[#A5A3A3] file:v2-text-white
+                               hover:file:v2-bg-[#999898]"
+                        required>
+                    <p class="hint-text v2-text-sm v2-text-black/60 v2-mt-1 v2-ml-2">Apenas arquivos .PDF</p>
+
+                  </div>
+
+                  <div>
+                    <label class="v2-font-medium" for="v2-file-crlv">CRLV da Moto:</label>
+                    <input
+                        id="v2-file-crlv"
+                        name="file-crlv"
+                        type="file"
+                        accept="application/pdf"
+                        class="v2-w-full v2-text-sm
+                               v2-text-gray-800
+                               v2-border v2-border-gray-300 v2-rounded-2xl v2-cursor-pointer
+                               v2-bg-gray-50
+                               file:v2-mr-3
+                               file:v2-py-2 file:v2-px-4
+                               file:v2-rounded-l-lg file:v2-rounded-r-none
+                               file:v2-border-0
+                               file:v2-text-sm
+                               file:v2-font-medium
+                               file:v2-bg-[#A5A3A3] file:v2-text-white
+                               hover:file:v2-bg-[#999898]"
+                        required>
+                    <p class="hint-text v2-text-sm v2-text-black/60 v2-mt-1 v2-ml-2">Apenas arquivos .PDF</p>
+                  </div>
+              </fieldset>
+            </section>
+
+
+            <!--REFERENCIAS-->
+            <section id="final_referencias" class="v2-hidden v2-space-y-8">
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Referência 1
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="nome_referencia_1" class="">Nome Completo:</label>
+                    <input type="text" id="nome_referencia_1" name="nome_referencia_1"
+                                                              class=" v2-rounded-2xl v2-w-full " required>
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="cpf_referencia_1" class="">CPF:</label>
+                      <input type="text" id="cpf_referencia_1" name="cpf_referencia_1" class="v2-rounded-2xl v2-w-full"
+                                                                                       placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="v2-w-1/2">
+                      <label for="email_referencia_1" class="v2-font-medium">E-Mail:</label>
+                      <input
+                          type="email"
+                          id="email_referencia_1"
+                          name="email_referencia_1"
+                          class="v2-rounded-2xl v2-w-full" required>
+                    </div>
+                  </div>
+              </fieldset>
+
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Referência 2
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="nome_referencia_2" class="">Nome Completo:</label>
+                    <input type="text" id="nome_referencia_2" name="nome_referencia_2"
+                                                              class=" v2-rounded-2xl v2-w-full "required>
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="cpf_referencia_2" class="">CPF:</label>
+                      <input type="text" id="cpf_referencia_2" name="cpf_referencia_2" class="v2-rounded-2xl v2-w-full"
+                                                                                       placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="v2-w-1/2">
+                      <label for="email_referencia_2" class="v2-font-medium">E-Mail:</label>
+                      <input
+                          type="email"
+                          id="email_referencia_2"
+                          name="email_referencia_2"
+                          class="v2-rounded-2xl v2-w-full" required>
+                    </div>
+                  </div>
+              </fieldset>
+
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Referência 3
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="nome_referencia_3" class="">Nome Completo:</label>
+                    <input type="text" id="nome_referencia_3" name="nome_referencia_3"
+                                                              class=" v2-rounded-2xl v2-w-full " required>
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="cpf_referencia_3" class="">CPF:</label>
+                      <input type="text" id="cpf_referencia_3" name="cpf_referencia_3" class="v2-rounded-2xl v2-w-full"
+                                                                                       placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="v2-w-1/2">
+                      <label for="email_referencia_3" class="v2-font-medium">E-Mail:</label>
+                      <input
+                          type="email"
+                          id="email_referencia_3"
+                          name="email_referencia_3"
+                          class="v2-rounded-2xl v2-w-full" required>
+                    </div>
+                  </div>
+              </fieldset>
+
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Referência 4
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="nome_referencia_4" class="">Nome Completo:</label>
+                    <input type="text" id="nome_referencia_4" name="nome_referencia_4"
+                                                              class=" v2-rounded-2xl v2-w-full " required>
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="cpf_referencia_4" class="">CPF:</label>
+                      <input type="text" id="cpf_referencia_4" name="cpf_referencia_4" class="v2-rounded-2xl v2-w-full"
+                                                                                       placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="v2-w-1/2">
+                      <label for="email_referencia_4" class="v2-font-medium">E-Mail:</label>
+                      <input
+                          type="email"
+                          id="email_referencia_4"
+                          name="email_referencia_4"
+                          class="v2-rounded-2xl v2-w-full" required>
+                    </div>
+                  </div>
+              </fieldset>
+
+              <fieldset class="v2-border-0 v2-bg-[#E0E0E0] v2-rounded-2xl v2-p-6 v2-pt-4 v2-relative">
+                <legend>
+                  Referência 5
+                </legend>
+
+                <div class="space-y-4">
+                  <div>
+                    <label for="nome_referencia_5" class="">Nome Completo:</label>
+                    <input type="text" id="nome_referencia_5" name="nome_referencia_5"
+                                                              class=" v2-rounded-2xl v2-w-full " required>
+                  </div>
+                  <div class="v2-flex v2-w-full v2-gap-4">
+                    <div class="v2-w-1/2">
+                      <label for="cpf_referencia_5" class="">CPF:</label>
+                      <input type="text" id="cpf_referencia_5" name="cpf_referencia_5" class="v2-rounded-2xl v2-w-full"
+                                                                                       placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="v2-w-1/2">
+                      <label for="email_referencia_5" class="v2-font-medium">E-Mail:</label>
+                      <input
+                          type="email"
+                          id="email_referencia_5"
+                          name="email_referencia_5"
+                          class="v2-rounded-2xl v2-w-full" required>
+                    </div>
+                  </div>
+              </fieldset>
+
+
+            </section>
+          </form>
+          <footer class="v2-space-y-4 v2-w-full v2-mt-4">
+            <div class="form-navigation final-nav v2-w-full">
+              <button type="button" class="btn-secondary nav-prev" aria-label="Voltar para a etapa anterior" disabled>Voltar</button>
+              <button type="button" class="btn-primary nav-next" aria-label="Avançar para a próxima etapa">Próximo</button>
+            </div>
+            <p class="v2-text-black/50 v2-text-xs">
+            © 2025 MotoCred. Todos os direitos reservados.
+            </p>
+          </footer>
+                </div>
+                </div>
+    </section>
+
+    <!-- <script type="module" src="./api/main.js"></script> -->
+    <script type="module" src="script.js"></script>
     <script src="scripts/calculo-ppa.js"></script>
-</body>
+  </body>
 </html>
