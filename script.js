@@ -1,5 +1,5 @@
 ﻿import { openV2AsPage } from "./ui.js"
-import { debounce, serializeFormToPayload } from "./utils.js"
+import { debounce, numFromInput, serializeFormToPayload, serializePayloadFinal } from "./utils.js"
 
 import {
   preAnalysisRequest,
@@ -9,17 +9,23 @@ import {
 
 import {
   loadInitialFormStorage,
-  saveInitialFieldValue,
   loadFinalPlaceholderData,
   saveFinalPlaceholderData,
-  getFinalPlaceholderValue
+  saveInitialFormFieldValue,
+  getFinalPlaceholderValue,
+  initialFormData,
+  finalPlaceholderData,
+  INITIAL_FORM_STORAGE_KEY,
+  FINAL_PLACEHOLDER_STORAGE_KEY
 } from "./persistences.js"
 
 import {
   setFlowStage,
-  getFlowStage
+  getFlowStage,
   setInitialPPA,
-  loadPPA
+  loadPPA,
+  FLOW_STAGES,
+  FLOW_STAGE_KEY
 } from "./flowContollers.js"
 
 let rendaGlobal = 0;
@@ -27,20 +33,13 @@ let limit40Global = false;
 let lastDownPayment = 0;
 let lastCredit = 0;
 
-const FLOW_STAGE_KEY = 'motocredFlowStage';
-const FLOW_STAGES = {
-  FORMULARIO_INICIAL: 'formulario_inicial',
-  SIMULACAO: 'simulacao',
-  FORMULARIO_FINAL: 'formulario_final'
-};
+
 const FINAL_STEP_IDS = [
   'final_dados_cliente',
   'final_documentacao',
   'final_referencias'
 ];
 const FINAL_FORM_STORAGE_KEY = 'formFinalData';
-const INITIAL_FORM_STORAGE_KEY = 'formCadastroData';
-const FINAL_PLACEHOLDER_STORAGE_KEY = 'formFinalPlaceholderData';
 const FINAL_PLACEHOLDER_MAP = [
   { key: 'nome', source: '#nome_cliente', target: '#final_nome_cliente' },
   { key: 'cpf', source: '#cpf', target: '#final_cpf' },
@@ -48,11 +47,55 @@ const FINAL_PLACEHOLDER_MAP = [
   { key: 'email', source: '#email_cliente', target: '#final_email_cliente' }
 ];
 
-let finalPlaceholderData = {};
-let initialFormData = {};
+// let finalPlaceholderData = {};
+// let initialFormData = {};
 
 loadInitialFormStorage();
 loadFinalPlaceholderData();
+
+//ENVIO DO FORM FINAL
+export async function enviarFinalAnalise(formFinal) {
+  // reúne todos os campos textuais normalmente
+  const payload = serializePayloadFinal(formFinal);
+
+  // pega os arquivos dos inputs
+  const idFile = formFinal.querySelector('input[name="file-doc-id"]')?.files[0];
+  const extratoFile = formFinal.querySelector('input[name="file-extrato"]')?.files[0];
+  const residenciaFile = formFinal.querySelector('input[name="file-residencia"]')?.files[0];
+  const crlvFile = formFinal.querySelector('input[name="file-crlv"]')?.files[0];
+
+  
+
+
+  const formData = new FormData();
+  formData.append("dados", JSON.stringify(payload));
+
+  if (idFile) formData.append("id_pdf", idFile);
+  if (extratoFile) formData.append("extrato_pdf", extratoFile);
+  if (residenciaFile) formData.append("residencia_pdf", residenciaFile);
+  if (crlvFile) formData.append("crlv_pdf", crlvFile);
+
+
+
+  const url = "https://script.google.com/a/macros/motocred.digital/s/AKfycbw0jYwTCgBlgfJ3EVO6azFyhrxaGbJHI2cgd7u7CcURV5CuJsZBmxPTn_KnDyHIA7w2gg/exec";
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: formData   // <-- sem headers!
+    });
+
+    const result = await response.json();
+    console.log("Retorno do Apps Script:", result);
+
+    return result;
+
+  } catch (erro) {
+    console.error("Erro ao enviar:", erro);
+    return { ok: false, erro };
+  }
+}
+
 
 (function () {
     console.log('[PPA] Script carregado. Versão:', new Date().toISOString());
@@ -324,7 +367,10 @@ loadFinalPlaceholderData();
   const updateValorEntradaHint = () => {
     if (!valorMotoInput || !valorEntradaInput) return;
 
-    const minimo = calculateValorEntradaMinimo();
+    let minimo = calculateValorEntradaMinimo();
+        if(minimo < 4000){
+            minimo = 4000; 
+        }
     const formatted = minimo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     // força repaint do placeholder em todos os navegadores
@@ -998,13 +1044,7 @@ loadFinalPlaceholderData();
 
 
   // helper p/ ler número do input (usa a máscara; tem fallback)
-  function numFromInput(el) {
-    if (!el) return NaN;
-    if (typeof el.getNumberValue === 'function') return el.getNumberValue();
-    const raw = String(el.value || '').replace(/\./g, '').replace(',', '.');
-    const n = Number(raw);
-    return Number.isFinite(n) ? n : NaN;
-  }
+
 
   // aplica a máscara nos três campos
   attachBRLMoneyMask(document.getElementById('valor_moto'));
@@ -1084,19 +1124,19 @@ loadFinalPlaceholderData();
 
         if (sugestoes.length == 1){
           mensagemHTML += `
-<ul class="list-none pl-5">
-<li>- ${sugestoes[0]}</li>
-</ul>
-`;
+            <ul class="list-none pl-5">
+            <li>- ${sugestoes[0]}</li>
+            </ul>
+            `;
         }
         else{
           // sempre mostra duas sugestões unidas por "OU"
           mensagemHTML += `
-<ul class="list-none pl-5">
-<li>- ${sugestoes[0]} OU</li>
-<li>- ${sugestoes[1]}</li>
-</ul>
-`;
+            <ul class="list-none pl-5">
+            <li>- ${sugestoes[0]} OU</li>
+            <li>- ${sugestoes[1]}</li>
+            </ul>
+            `;
         }
       }
       feedbackArea.innerHTML = mensagemHTML;
@@ -1777,6 +1817,20 @@ loadFinalPlaceholderData();
     const formFinal = document.getElementById('formFinal');
     if (!formFinal) return;
 
+  formFinal.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!ensureDocumentFilesSelected()) return;
+
+    try {
+      const resposta = await enviarFinalAnalise(formFinal);
+      console.log('Resposta:', resposta);
+      // aqui depois dá feedback ao usuário ou avança para a próxima tela
+    } catch (err) {
+      console.error('Falha ao enviar formulário final', err);
+      // opcional: mostrar erro na UI
+    }
+  });
+
     const persistableFields = Array.from(formFinal.querySelectorAll('input, select, textarea'))
     .filter((field) => field.name && !field.disabled && field.type !== 'file');
     const referenceCpfInputs = Array.from(formFinal.querySelectorAll('input[id^="cpf_referencia_"]'));
@@ -2000,8 +2054,8 @@ loadFinalPlaceholderData();
 
       if (currentStep === stepOrder.length - 1) {
         if (!ensureDocumentFilesSelected()) return;
-        alert('? Enviar formulário final (implementação futura)');
-        // aqui depois envia para planilha ou backend
+         formFinal.requestSubmit();
+
         return;
       }
 

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply m-0 min-h-screen bg-brand text-brand flex justify-center items-start font-sans py-8 px-4;
+    @apply v2-m-0 min-h-screen bg-brand text-brand flex justify-center items-start font-sans py-8 px-4;
   }
 
   h1,
@@ -364,13 +364,13 @@ body.confirmado #tela_confirmacao {
     display: none !important;
   }
 
-  .form-navigation {
-    @apply flex items-center justify-between gap-4 w-full;
+  /* .form-navigation {
+    @apply w-full;
   }
 
   .form-navigation .nav-button-group {
-    @apply flex gap-3 ml-auto;
-  }
+    @apply flex justify-between w-full;
+  } */
 
   /* Em styles.css */
 

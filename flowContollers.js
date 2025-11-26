@@ -1,3 +1,10 @@
+export const FLOW_STAGE_KEY = 'motocredFlowStage';
+export const FLOW_STAGES = {
+  FORMULARIO_INICIAL: 'formulario_inicial',
+  SIMULACAO: 'simulacao',
+  FORMULARIO_FINAL: 'formulario_final'
+};
+
 export function setFlowStage(stage) {
   try {
     localStorage.setItem(FLOW_STAGE_KEY, stage);
