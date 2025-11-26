@@ -16,10 +16,10 @@
 
   </head>
 
-  <body class="min-h-svh flex items-stretch justify-center bg-brand">
+  <body class="v2-min-h-svh v2-flex v2-items-stretch v2-justify-center v2-bg-brand">
     <div class="v1-shell">
 
-      <div class="card max-w-[820px] w-full flex flex-col">
+      <div class="card v2-max-w-[820px] v2-w-full v2-flex v2-flex-col">
         <div class="header">
           <img class="img_logo" src="imagens/motocred_logo.avif" alt="Logo MotoCred">
         </div>
@@ -56,11 +56,11 @@
                 <fieldset class="fieldset fieldset-radio">
                   <legend class="legend">Você é:</legend>
                   <div class="radio-options radio-options-horizontal">                                <label class="inline-option">
-                      <input class="sr-only peer" type="radio" name="tipo_usuario" value="comprador" required>
+                      <input class="v2-sr-only v2-peer" type="radio" name="tipo_usuario" value="comprador" required>
                       <span class="radio-pill peer-checked:radio-pill-checked">Comprador</span>
                     </label>
                     <label class="inline-option">
-                      <input class="sr-only peer" type="radio" name="tipo_usuario" value="vendedor">
+                      <input class="v2-sr-only v2-peer" type="radio" name="tipo_usuario" value="vendedor">
                       <span class="radio-pill peer-checked:radio-pill-checked">Vendedor</span>
                     </label>
                   </div>
@@ -108,12 +108,12 @@
                   <span class="radio-label">Possui CNH?</span>
                   <div class="radio-options radio-options-horizontal">
                     <label class="inline-option">
-                      <input class="sr-only peer" type="radio" name="cnh" value="sim" required>
-                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Sim</span>
+                      <input class="v2-sr-only v2-peer" type="radio" name="cnh" value="sim" required>
+                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:v2-ring-2 peer-focus-visible:v2-ring-orange-300">Sim</span>
                     </label>
                     <label class="inline-option">
-                      <input class="sr-only peer" type="radio" name="cnh" value="nao">
-                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:ring-2 peer-focus-visible:ring-orange-300">Não</span>
+                      <input class="v2-sr-only v2-peer" type="radio" name="cnh" value="nao">
+                      <span class="radio-pill peer-checked:radio-pill-checked peer-focus-visible:v2-ring-2 peer-focus-visible:v2-ring-orange-300">Não</span>
                     </label>
                   </div>
 
@@ -133,14 +133,14 @@
                 <fieldset class="fieldset" id="dados_venda">
                   <legend class="legend">Dados da Venda</legend>
 
-                  <div class="grid">
+                  <div class="v2-grid">
                     <div>
-                      <label for="valor_moto" class="font-medium">Valor da moto</label>
+                      <label for="valor_moto" class="v2-font-medium">Valor da moto</label>
                       <input id="valor_moto" name="valor_moto" inputmode="decimal" class="input" required />
                     </div>
 
                     <div>
-                      <label for="valor_entrada" class="font-medium">Valor de entrada</label>
+                      <label for="valor_entrada" class="v2-font-medium">Valor de entrada</label>
                       <input id="valor_entrada" name="valor_entrada" inputmode="decimal" class="input" required />
 
                     </div>
@@ -148,13 +148,13 @@
 
                   <!-- Mensagem de erro DENTRO do bloco escuro -->
                   <p id="erro_dados_venda"
-                     class="hidden mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                     class="v2-hidden v2-mt-4 v2-rounded-md v2-border v2-border-red-200 v2-bg-red-50 v2-px-4 v2-py-3 v2-text-sm v2-text-red-700"
                      role="alert" aria-live="polite"></p>
                 </fieldset>
               </section>
             </div>
 
-            <div class="form-navigation mt-4">
+            <div class="form-navigation v2-mt-4">
                 <button type="button" class="btn-secondary nav-prev" aria-label="Voltar para a etapa anterior" disabled>Voltar</button>
               <div class="nav-button-group">
                 <button type="button" class="btn-primary nav-next" aria-label="Avançar para a próxima etapa">Próximo</button>
@@ -183,7 +183,7 @@
 
 
         <header class="v2-flex v2-flex-col v2-items-center v2-space-y-3">
-          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 h-auto">
+          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 v2-h-auto">
           <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B]">Simulação de Financiamento</h1>
         </header>
 
@@ -245,7 +245,7 @@ v2-space-y-10">
         <!--v2-space-y-16 VERSUS v2-space-y-10 -->
 
         <header class="v2-flex v2-flex-col v2-items-center v2-space-y-3">
-          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 h-auto">
+          <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 v2-h-auto">
           <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B] v2-text-center">Simulação de Financiamento</h1>
         </header>
 

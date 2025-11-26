@@ -4,37 +4,37 @@
 
 @layer base {
   body {
-    @apply v2-m-0 min-h-screen bg-brand text-brand flex justify-center items-start font-sans py-8 px-4;
+    @apply v2-m-0 v2-min-h-screen v2-bg-brand v2-text-brand v2-flex v2-justify-center v2-items-start v2-font-sans v2-py-8 v2-px-4;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-heading text-brand;
+    @apply v2-font-heading v2-text-brand;
   }
 }
 
 /* Componentes com visual alinhado ao design atual */
 @layer components {
   .wrapper {
-    @apply w-full max-w-[820px] mx-auto bg-white text-brand rounded-xl2 border border-[#f3d9c8] shadow-card px-16 py-12;
+    @apply v2-w-full v2-max-w-[820px] v2-mx-auto v2-bg-white v2-text-brand v2-rounded-xl2 v2-border v2-border-[#f3d9c8] v2-shadow-card v2-px-16 v2-py-12;
   }
 
   .card {
-    @apply bg-white rounded-xl2 border border-orange-100 shadow-card p-8 text-brand;
+    @apply v2-bg-white v2-rounded-xl2 v2-border v2-border-orange-100 v2-shadow-card v2-p-8 v2-text-brand;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition;
+    @apply v2-inline-flex v2-items-center v2-justify-center v2-px-6 v2-py-3 v2-rounded-full v2-font-semibold v2-transition;
   }
 
   .btn-primary {
-    @apply btn bg-brand text-white shadow hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light;
+    @apply btn v2-bg-brand v2-text-white v2-shadow hover:v2-bg-brand-dark focus-visible:v2-outline-none focus-visible:v2-ring-2 focus-visible:v2-ring-brand-light;
   }
 
   .btn-secondary {
-    @apply btn border border-brand text-brand bg-white hover:bg-[#fff3eb];
+    @apply btn v2-border v2-border-brand v2-text-brand v2-bg-white hover:v2-bg-[#fff3eb];
   }
 
   /* Adiciona estilo para o botão secundário quando desabilitado */
@@ -44,7 +44,7 @@
   }
 
   .fieldset {
-    @apply rounded-[28px] border border-[#cfbdaf] bg-[#a36a343d] p-8 text-[#5A4033] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)];
+    @apply v2-rounded-[28px] v2-border v2-border-[#cfbdaf] v2-bg-[#a36a343d] v2-p-8 v2-text-[#5A4033] v2-shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)];
     /*
     monitor AMOLED: border #f0d9c8  bg #fff5ec
     monitor LCD:  border #cfbdaf  bg #a36a343d
@@ -52,11 +52,11 @@
   }
 
   .legend {
-    @apply font-semibold text-brand;
+    @apply v2-font-semibold v2-text-brand;
   }
 
   .input {
-    @apply block w-full rounded-xl border-neutral-400 focus:border-brand focus:ring-brand text-neutral-800 bg-white;
+    @apply v2-block v2-w-full v2-rounded-xl v2-border v2-border-neutral-400 focus:v2-border-brand focus:v2-ring-brand v2-text-neutral-800 v2-bg-white;
   }
 
   /* Utilitário (se já não vier do Tailwind) */
@@ -133,29 +133,29 @@ body.confirmado #tela_confirmacao {
   }
 
   .radio-pill {
-    @apply inline-flex items-center justify-center px-7 py-3 rounded-full border border-neutral-300 bg-white font-semibold text-neutral-800 cursor-pointer transition;
+    @apply v2-inline-flex v2-items-center v2-justify-center v2-px-7 v2-py-3 v2-rounded-full v2-border v2-border-neutral-300 v2-bg-white v2-font-semibold v2-text-neutral-800 v2-cursor-pointer v2-transition;
   }
 
   .radio-pill-checked {
-    @apply bg-brand border-brand text-white shadow;
+    @apply v2-bg-brand v2-border-brand v2-text-white v2-shadow;
   }
-  .step-dot { @apply h-1 w-14 rounded-full bg-orange-100; }
-  .step-dot-complete { @apply h-1 w-14 rounded-full bg-brand; }
-  .step-pill-active { @apply px-3 py-1 rounded-full bg-brand text-white text-sm font-semibold shadow; }
+  .step-dot { @apply v2-h-1 v2-w-14 v2-rounded-full v2-bg-orange-100; }
+  .step-dot-complete { @apply v2-h-1 v2-w-14 v2-rounded-full v2-bg-brand; }
+  .step-pill-active { @apply v2-px-3 v2-py-1 v2-rounded-full v2-bg-brand v2-text-white v2-text-sm v2-font-semibold v2-shadow; }
   .header {
-    @apply flex flex-col items-center gap-3 mb-4 text-center;
+    @apply v2-flex v2-flex-col v2-items-center v2-gap-3 v2-mb-4 v2-text-center;
   }
 
   .img_logo {
-    @apply max-w-[220px] w-full h-auto mx-auto block;
+    @apply v2-max-w-[220px] v2-w-full v2-h-auto v2-mx-auto v2-block;
   }
 
   .hero {
-    @apply text-center mb-8;
+    @apply v2-text-center v2-mb-8;
   }
 
   #titulo_pagina {
-    @apply text-[2rem] font-semibold text-brand tracking-[0.02em] m-0;
+    @apply v2-text-[2rem] v2-font-semibold v2-text-brand v2-tracking-[0.02em] v2-m-0;
   }
 
   
@@ -184,12 +184,12 @@ body.confirmado #tela_confirmacao {
 /* ======================================================================== */
 
 #etapas_processo {
-  @apply mb-10 w-full flex flex-col items-center gap-3 text-center;
+  @apply v2-mb-10 v2-w-full v2-flex v2-flex-col v2-items-center v2-gap-3 v2-text-center;
 }
 
 /* O contêiner que segura as 4 abas */
 .step-tabs {
-  @apply w-full max-w-[520px] flex justify-center items-center gap-4;
+  @apply v2-w-full v2-max-w-[520px] v2-flex v2-justify-center v2-items-center v2-gap-4;
 }
 
 /* A base para CADA UMA das 4 abas (TAMANHO X) */
@@ -197,7 +197,7 @@ body.confirmado #tela_confirmacao {
   height: 44px;
   /* Define uma LARGURA FIXA de 99px, impedindo que o texto a alargue */
   flex: 0 0 70px; 
-  @apply flex justify-center items-center text-center relative py-1 px-2 border-0 bg-transparent cursor-pointer;
+  @apply v2-flex v2-justify-center v2-items-center v2-text-center v2-relative v2-py-1 v2-px-2 v2-border-0 v2-bg-transparent v2-cursor-pointer;
   /* Anima a mudança de altura e largura */
   transition: flex-basis 0.4s ease, height 0.4s ease;
 }
@@ -211,12 +211,12 @@ body.confirmado #tela_confirmacao {
 
 /* O texto (<span>) dentro de cada aba */
 .step-tab span {
-  @apply hidden;
+  @apply v2-hidden;
 }
 
 /* O texto (<span>) dentro da aba ATIVA */
 .step-tab.is-active span {
-  @apply inline-block text-white text-sm font-semibold;
+  @apply v2-inline-block v2-text-white v2-text-sm v2-font-semibold;
   position: relative;
   z-index: 1;
   line-height: 1.2; /* Bom para textos com quebra de linha */
@@ -273,22 +273,22 @@ body.confirmado #tela_confirmacao {
 /* ======================================================================== */
 
 .step-current-label {
-    @apply mt-1.5 text-lg font-semibold text-white;
+    @apply v2-mt-1.5 v2-text-lg v2-font-semibold v2-text-white;
   }
 
   /* .step-current-label { display: none; } */
 
 
   .main {
-    @apply flex flex-col;
+    @apply v2-flex v2-flex-col;
   }
 
   .main form {
-    @apply flex flex-col gap-8;
+    @apply v2-flex v2-flex-col v2-gap-8;
   }
 
   .form-steps {
-    @apply flex flex-col gap-8;
+    @apply v2-flex v2-flex-col v2-gap-8;
   }
 
   .form-step {
@@ -304,7 +304,7 @@ body.confirmado #tela_confirmacao {
   }
 
   fieldset label {
-    @apply flex flex-col text-[0.95rem] gap-1.5 mt-4 text-[#333333] font-medium;
+    @apply v2-flex v2-flex-col v2-text-[0.95rem] v2-gap-1.5 v2-mt-4 v2-text-[#333333] v2-font-medium;
   }
 
   fieldset label:first-of-type {
@@ -312,23 +312,23 @@ body.confirmado #tela_confirmacao {
   }
 
   .radio-label {
-    @apply block mt-4 font-semibold text-[#333333];
+    @apply v2-block v2-mt-4 v2-font-semibold v2-text-[#333333];
   }
 
   .field-hint {
-    @apply block text-sm text-[#5b3921] my-1.5;
+    @apply v2-block v2-text-sm v2-text-[#5b3921] v2-my-1.5;
   }
 
   .radio-options {
-    @apply flex flex-wrap items-center justify-start gap-6 mt-4;
+    @apply v2-flex v2-flex-wrap v2-items-center v2-justify-start v2-gap-6 v2-mt-4;
   }
 
   .fieldset-radio .radio-options {
-    @apply justify-center gap-6;
+    @apply v2-justify-center v2-gap-6;
   }
 
   .inline-option {
-    @apply relative inline-flex items-center mt-0 p-0;
+    @apply v2-relative v2-inline-flex v2-items-center v2-mt-0 v2-p-0;
   }
 
   .inline-option input[type="radio"] {
@@ -340,7 +340,7 @@ body.confirmado #tela_confirmacao {
   }
 
   .inline-option span {
-    @apply inline-flex items-center justify-center px-7 py-3 rounded-full border border-neutral-400 bg-white text-brand font-semibold tracking-[0.01em] transition duration-200;
+    @apply v2-inline-flex v2-items-center v2-justify-center v2-px-7 v2-py-3 v2-rounded-full v2-border v2-border-neutral-400 v2-bg-white v2-text-brand v2-font-semibold v2-tracking-[0.01em] v2-transition v2-duration-200;
   }
 
   .inline-option input[type="radio"]:checked + span {
@@ -365,11 +365,11 @@ body.confirmado #tela_confirmacao {
   }
 
   /* .form-navigation {
-    @apply w-full;
+    @apply v2-w-full;
   }
 
   .form-navigation .nav-button-group {
-    @apply flex justify-between w-full;
+    @apply v2-flex v2-justify-between v2-w-full;
   } */
 
   /* Em styles.css */
@@ -392,7 +392,7 @@ body.confirmado #tela_confirmacao {
   .radio-pill-checked {
       /* @apply é uma diretiva do Tailwind para aplicar utilitários dentro do CSS customizado. */
       /* Isso garante que a cor do texto seja a cor principal do seu site. */
-      @apply text-brand;
+      @apply v2-text-brand;
   }
 
   /* Em styles.css - Adicione esta nova regra */
@@ -401,11 +401,11 @@ body.confirmado #tela_confirmacao {
   /* O seletor mira o span.radio-pill dentro da primeira etapa do formulário. */
   .form-steps .form-step[data-step="1"] .radio-pill {
       /* Aplica a cor da marca (text-brand) ao texto do botão, por padrão. */
-      @apply text-brand;
+      @apply v2-text-brand;
   }
 
   .form-steps .form-step[data-step="1"] .radio-pill.radio-pill-checked { 
-    @apply text-white; /* ESPECIFICIDADE MÁXIMA */
+    @apply v2-text-white; /* ESPECIFICIDADE MÁXIMA */
 }
 
   #dados-venda {
