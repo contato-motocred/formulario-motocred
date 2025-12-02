@@ -1,0 +1,866 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 min-h-screen bg-brand text-brand flex justify-center items-start font-sans;
+  }
+
+  .v1-shell {
+    /* bg, layout da V1 */
+  }
+
+  .v1-shell h1,
+  .v1-shell h2,
+  .v1-shell h3,
+  .v1-shell h4 {
+    @apply font-heading text-brand;
+  }
+}
+
+/* Componentes com visual alinhado ao design atual */
+@layer components {
+  .wrapper {
+    @apply w-full max-w-[820px] mx-auto bg-white text-brand rounded-xl2 border border-[#f3d9c8] shadow-card px-16 py-12;
+  }
+
+  .card {
+    @apply bg-white rounded-xl2 border border-orange-100 shadow-card p-8 text-brand;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand text-white shadow hover:bg-brand-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-light;
+  }
+
+  .btn-secondary {
+    @apply btn border border-brand text-brand bg-white hover:bg-[#fff3eb];
+  }
+
+  /* Adiciona estilo para o botão secundário quando desabilitado */
+  .btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .fieldset {
+    @apply rounded-[28px] border border-[#cfbdaf] bg-[#a36a343d] p-8 text-[#5A4033] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)];
+    /*
+    monitor AMOLED: border #f0d9c8  bg #fff5ec
+    monitor LCD:  border #cfbdaf  bg #a36a343d
+    */
+  }
+
+  .legend {
+    @apply font-semibold text-brand;
+  }
+
+  .input {
+    @apply block w-full rounded-xl border-neutral-400 focus:border-brand focus:ring-brand text-neutral-800 bg-white;
+  }
+
+  /* Utilitário (se já não vier do Tailwind) */
+  /* .hidden { display: none !important; } */
+
+  /* Estado final: some com tudo do fluxo e remova espaçamentos */
+  body.confirmado #etapas_processo,
+  body.confirmado .form-steps,
+  body.confirmado .form-navigation,
+  body.confirmado form {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Opcional: se quiser esconder o título também 
+body.confirmado .hero {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}*/
+
+  /* Faça a área principal virar um container flex que centraliza a confirmação */
+  body.confirmado .main {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  /* A tela de confirmação preenche e centraliza */
+  body.confirmado #tela_confirmacao {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0.01rem !important;
+    text-align: center !important;
+  }
+
+  /* Ajustes visuais da confirmação */
+  #tela_confirmacao .confirmacao-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #tela_confirmacao .check-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  /* Estilo da confirmação */
+  .confirmacao {
+    display: none;
+    min-height: 60vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .confirmacao-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .check-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  /* Em styles.css */
+
+  #valor_entrada::placeholder {
+    color: #5a4033; /* Mesma cor do texto do fieldset */
+    opacity: 0.7; /* Opacidade reduzida */
+  }
+
+  .radio-pill {
+    @apply inline-flex items-center justify-center px-7 py-3 rounded-full border border-neutral-300 bg-white font-semibold text-neutral-800 cursor-pointer transition;
+  }
+
+  .radio-pill-checked {
+    @apply bg-brand border-brand text-white shadow;
+  }
+  .step-dot {
+    @apply h-1 w-14 rounded-full bg-orange-100;
+  }
+  .step-dot-complete {
+    @apply h-1 w-14 rounded-full bg-brand;
+  }
+  .step-pill-active {
+    @apply px-3 py-1 rounded-full bg-brand text-white text-sm font-semibold shadow;
+  }
+  .header {
+    @apply flex flex-col items-center gap-3 mb-4 text-center;
+  }
+
+  .img_logo {
+    @apply max-w-[220px] w-full h-auto mx-auto block;
+  }
+
+  .hero {
+    @apply text-center mb-8;
+  }
+
+  #titulo_pagina {
+    @apply text-[2rem] font-semibold text-brand tracking-[0.02em] m-0;
+  }
+
+  /* ------------------------------------------- */
+  /* NO SEU ARQUIVO DE ESTILOS CUSTOMIZADO */
+  /* ------------------------------------------- */
+  #texto-confirmacao {
+    font-size: 20px;
+    line-height: 1.6;
+
+    color: #f37521 !important;
+  }
+
+  /* 2. O ÍCONE DE CHECK VAI USAR A MESMA ALTURA */
+  .check-icon {
+    /* 🎯 Use a mesma altura definida no item 1 */
+    height: auto !important;
+    width: 90px !important; /* ESSENCIAL: Garante que a largura seja proporcional */
+    display: block !important;
+    /* Regras de centralização */
+    margin: 16px auto 0 !important;
+  }
+
+  /* ======================================================================== */
+  /* INÍCIO DO CÓDIGO CORRIGIDO PARA AS ETAPAS                            */
+  /* ======================================================================== */
+
+  #etapas_processo {
+    @apply mb-4 w-full flex flex-col items-center gap-3 text-center;
+  }
+
+  /* O contêiner que segura as 4 abas */
+  .step-tabs {
+    @apply w-full max-w-[520px] flex justify-center items-center gap-4;
+  }
+
+  /* A base para CADA UMA das 4 abas (TAMANHO X) */
+  .step-tab {
+    height: 44px;
+    /* Define uma LARGURA FIXA de 99px, impedindo que o texto a alargue */
+    flex: 0 0 70px;
+    @apply flex justify-center items-center text-center relative py-1 px-2 border-0 bg-transparent cursor-pointer;
+    /* Anima a mudança de altura e largura */
+    transition: flex-basis 0.4s ease, height 0.4s ease;
+  }
+
+  /* A aba ATIVA (TAMANHO Y) */
+  .step-tab.is-active {
+    height: 50px;
+    /* Define uma LARGURA FIXA e MAIOR de 109px para a aba ativa */
+    flex: 0 0 129px;
+  }
+
+  /* O texto (<span>) dentro de cada aba */
+  .step-tab span {
+    @apply hidden;
+  }
+
+  /* O texto (<span>) dentro da aba ATIVA */
+  .step-tab.is-active span {
+    @apply inline-block text-white text-sm font-semibold;
+    position: relative;
+    z-index: 1;
+    line-height: 1.2; /* Bom para textos com quebra de linha */
+  }
+
+  /* O fundo de CADA aba (formato de barrinha) */
+  .step-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background-color: #f8e5db;
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  /* Cor laranja para abas ATIVAS ou COMPLETAS */
+  .step-tab.is-active::after,
+  .step-tab.is-complete::after {
+    background-color: #f37521;
+  }
+
+  /* Expansão do fundo para a aba ATIVA (formato de pílula) */
+  .step-tab.is-active::after {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    transform: none;
+    /*box-shadow: 0 6px 18px rgba(243, 117, 33, 0.25);*/
+  }
+
+  /* Novo estado para abas que foram puladas, mas devem ser marcadas como concluídas */
+  .step-tab.is-skipped-complete::after {
+    background-color: #f37521; /* Laranja */
+  }
+
+  /* Estilos de abas desabilitadas e de foco */
+  .step-tab:disabled {
+    cursor: default;
+  }
+  .step-tab:focus-visible {
+    outline: none;
+  }
+  .step-tab:focus-visible::after {
+    box-shadow: 0 0 0 3px rgba(243, 117, 33, 0.35);
+  }
+
+  /* ======================================================================== */
+  /* FIM DO CÓDIGO CORRIGIDO                                              */
+  /* ======================================================================== */
+
+  .step-current-label {
+    @apply mt-1.5 text-lg font-semibold text-white;
+  }
+
+  /* .step-current-label { display: none; } */
+
+  .main {
+    @apply flex flex-col;
+  }
+
+  .main form {
+    @apply flex flex-col gap-8;
+  }
+
+  .form-steps {
+    @apply flex flex-col gap-8;
+  }
+
+  .form-step {
+    display: none;
+  }
+
+  .form-step.is-active {
+    display: block;
+  }
+
+  .form-step.is-hidden-step {
+    display: none !important;
+  }
+
+  fieldset label {
+    @apply flex flex-col text-[0.95rem] gap-1.5 mt-4 text-[#333333] font-medium;
+  }
+
+  fieldset label:first-of-type {
+    margin-top: 0;
+  }
+
+  .radio-label {
+    @apply block mt-4 font-semibold text-[#333333];
+  }
+
+  .field-hint {
+    @apply block text-sm text-[#5b3921] my-1.5;
+  }
+
+  .radio-options {
+    @apply flex flex-wrap items-center justify-start gap-6 mt-4;
+  }
+
+  .fieldset-radio .radio-options {
+    @apply justify-center gap-6;
+  }
+
+  .inline-option {
+    @apply relative inline-flex items-center mt-0 p-0;
+  }
+
+  .inline-option input[type="radio"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .inline-option span {
+    @apply inline-flex items-center justify-center px-7 py-3 rounded-full border border-neutral-400 bg-white text-brand font-semibold tracking-[0.01em] transition duration-200;
+  }
+
+  .inline-option input[type="radio"]:checked + span {
+    background-color: #f37521;
+    border-color: #f37521;
+    color: #ffffff;
+  }
+
+  .inline-option input[type="radio"]:focus-visible + span {
+    box-shadow: 0 0 0 3px rgba(243, 117, 33, 0.35);
+  }
+
+  .inline-option input[type="radio"]:not(:checked) + span:hover {
+    border-color: #dca77c;
+    background-color: #fff3eb;
+    color: #d86216;
+  }
+
+  .is-hidden,
+  fieldset.is-hidden {
+    display: none !important;
+  }
+
+  .form-navigation {
+    @apply flex items-center justify-between gap-4 w-full;
+    margin-top: 1.5rem;
+  }
+
+  .form-navigation .nav-button-group {
+    @apply flex gap-3 ml-auto;
+  }
+
+  /* Em styles.css */
+
+  /* Garante que este grupo específico fique sempre na horizontal e centralizado */
+  .radio-options-horizontal {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  /* Deixa o texto dos botões Sim/Não preto por padrão */
+  .radio-options-horizontal .radio-pill {
+    color: black;
+  }
+
+  /* Em styles.css - Adicione esta nova regra */
+
+  /* Sobrescreve a cor do texto para o estado checado (.radio-pill-checked) */
+  /* Isso usa a mesma cor da classe 'text-brand' que define o título. */
+  .radio-pill-checked {
+    /* @apply é uma diretiva do Tailwind para aplicar utilitários dentro do CSS customizado. */
+    /* Isso garante que a cor do texto seja a cor principal do seu site. */
+    @apply text-brand;
+  }
+
+  /* Em styles.css - Adicione esta nova regra */
+
+  /* Altera a cor do texto padrão (não-selecionado) APENAS nos botões Comprador/Vendedor */
+  /* O seletor mira o span.radio-pill dentro da primeira etapa do formulário. */
+  .form-steps .form-step[data-step="1"] .radio-pill {
+    /* Aplica a cor da marca (text-brand) ao texto do botão, por padrão. */
+    @apply text-brand;
+  }
+
+  .form-steps .form-step[data-step="1"] .radio-pill.radio-pill-checked {
+    @apply text-white; /* ESPECIFICIDADE MÁXIMA */
+  }
+
+  #dados-venda {
+    background-color: #f5f2f0; /* ou o mesmo fundo escuro que você já usa */
+    border-radius: 1rem;
+    /*padding: 1.5rem;*/
+    position: relative;
+  }
+
+  #erro_dados_venda {
+    animation: aparecerErro 0.3s ease;
+  }
+
+  /* WRAPPER PARA TIRAR DESIGN DO BODY NA V2*/
+  /* no final do styles.css */
+  /* no final do styles.css */
+  .v2-wrapper {
+    display: block;
+    font-family: Inter, system-ui, sans-serif;
+    color: #111 !important;
+  }
+  .v2-wrapper,
+  .v2-wrapper * {
+    box-sizing: border-box;
+  }
+  .v2-wrapper h1,
+  .v2-wrapper h2,
+  .v2-wrapper h3,
+  .v2-wrapper h4 {
+    color: inherit;
+  }
+
+  /* Quando o body estiver em modo V2, zera o estilo global dele */
+  body.v2-mode {
+    background: transparent !important;
+    color: initial !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* ========= Range V2 (puro CSS) ========= */
+  /* Base */
+  input.v2-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+  }
+  input.v2-range:focus {
+    outline: none;
+  }
+
+  /* WebKit (Chrome/Edge/Safari) */
+  input.v2-range::-webkit-slider-runnable-track {
+    height: 7px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      #000 var(--pct, 0%),
+      #d1d5db var(--pct, 0%)
+    );
+  }
+  input.v2-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    /* MUDANÇAS: Cor e Borda */
+    background: white;
+    border: 2px solid #000;
+    /* FIM MUDANÇAS */
+    margin-top: -6px; /* Ajustado para centralizar com a borda de 2px */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Firefox */
+  input.v2-range::-moz-range-track {
+    height: 7px;
+    border-radius: 9999px;
+    background: #d1d5db;
+  }
+  input.v2-range::-moz-range-progress {
+    height: 7px;
+    border-radius: 9999px;
+    background: #000;
+  }
+  input.v2-range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    /* MUDANÇAS: Cor e Borda */
+    background: white;
+    border: 2px solid #000;
+    /* FIM MUDANÇAS */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  /* (Opcional) Especificidade máxima por id */
+  #valor-moto.v2-range,
+  #valor-entrada.v2-range {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Legacy styles migrated to Tailwind */
+
+  /*.entrada-alert {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  max-width: 18rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  background: rgba(250, 129, 32, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  z-index: 60;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}*/
+
+  .entrada-alert__title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .entrada-alert__text {
+    font-size: 0.85rem;
+    line-height: 1.2rem;
+    margin: 0;
+  }
+
+  .entrada-alert__close {
+    border: none;
+    background: transparent;
+    color: #f2600b;
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0 0.25rem;
+  }
+
+  .entrada-alert__close:hover {
+    color: #c44904;
+  }
+
+  /* ============================================================= */
+  /* 🔧 Correção: restabelece o escopo visual da V2 (Form Final)   */
+  /* ============================================================= */
+
+  body.v2-mode {
+    background-color: #d9d9d9 !important;
+  }
+
+  #form-final.v2-wrapper {
+    position: relative; /* ❌ não fixo */
+    min-height: 100vh; /* altura mínima da viewport */
+    background-color: #d9d9d9 !important;
+    font-family: Inter, system-ui, sans-serif !important;
+    color: #111 !important;
+    overflow-y: auto !important; /* ✅ permite rolagem */
+    overflow-x: hidden !important;
+    z-index: 1; /* só pra manter acima do fundo */
+  }
+
+  /* Força o Tailwind prefixado (v2-) a prevalecer dentro do form */
+  #form-final.v2-wrapper * {
+    font-family: inherit !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Restaura a personalização de inputs */
+  #form-final input,
+  #form-final select,
+  #form-final textarea {
+    border: 1px solid #d1d5db !important; /* igual v2-border-gray-300 */
+    background-color: #fff !important; /* igual v2-bg-gray-50 */
+    color: #111827 !important; /* igual v2-text-gray-800 */
+    border-radius: 1rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  #form-final input[type="radio"] {
+    border: initial !important;
+    background: initial !important;
+    border-radius: initial !important;
+    width: auto !important;
+    height: auto !important;
+    appearance: auto !important;
+  }
+
+  /* Inputs desabilitados (mantém o visual cinza claro) */
+  #form-final input[disabled],
+  #form-final select[disabled],
+  #form-final textarea[disabled] {
+    background-color: #ebebeb !important;
+    opacity: 1 !important;
+  }
+
+  #form-final legend {
+    position: absolute;
+    top: -0.75rem;
+    left: 1.5rem;
+    color: #f2600b !important;
+    font-weight: 600 !important;
+    background-color: #e0e0e0;
+    border-radius: 0.25rem;
+  }
+
+  #form-final .nav-prev {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+
+  #form-final .nav-next {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+
+  #form-final footer p {
+    text-align: center;
+  }
+
+  /* ================================ */
+  /* FORM FINAL - BARRA DE ETAPAS     */
+  /* ================================ */
+  #form-final .final-stepper {
+    @apply w-full flex justify-center items-center gap-3 mt-6 mb-3;
+    min-height: 36px;
+  }
+
+  .final-step-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: #c7c7c7 !important;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    appearance: none;
+    overflow: hidden;
+    position: relative;
+    opacity: 1;
+    align-self: center;
+  }
+
+  .final-step-tab span {
+    display: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  .final-step-tab.is-active {
+    min-width: 140px;
+    height: 36px;
+    padding: 0 20px;
+    border-radius: 999px;
+    background-color: #000 !important;
+  }
+
+  .final-step-tab.is-complete {
+    background-color: #000 !important;
+  }
+
+  .final-step-tab.is-complete span {
+    display: none !important;
+  }
+  .final-step-tab.is-active span,
+  .final-step-tab.is-complete span {
+    display: inline;
+    font-size: 0.9rem;
+  }
+
+  .final-step-tab[aria-disabled="true"] {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  #form-final .final-stepper {
+    @apply flex items-center gap-3 mt-6 mb-3;
+    min-height: 36px;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  #form-final .final-step-current-label {
+    @apply block text-center font-semibold text-[#1f1f1f] mb-4;
+    font-size: 1rem;
+  }
+
+  #form-final .form-navigation.final-nav {
+    @apply flex items-center justify-between gap-4;
+  }
+
+  #form-final footer .form-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #form-final footer .nav-prev {
+    margin-right: auto;
+  }
+
+  #form-final footer .nav-button-group {
+    margin-left: auto;
+  }
+
+  /* Dentro de @layer components ou no final do arquivo */
+
+  .hint-text {
+    /* Exemplo de estilo que você pode adicionar */
+    @apply v2-text-xs v2-text-black/60 v2-mt-1 v2-ml-2;
+  }
+
+  /* No mobile, podemos diminuir um pouco os botões para garantir que caibam */
+  @media (max-width: 480px) {
+    .radio-options-horizontal .radio-pill {
+      padding-left: 1.25rem; /* px-5 */
+      padding-right: 1.25rem; /* px-5 */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .step-tabs {
+      max-width: 360px;
+      padding: 0 10px;
+      gap: 12px;
+    }
+
+    .step-tab {
+      /* No mobile, trocamos a largura fixa por um modelo flexível */
+      flex: 1 1 0%;
+      /* Também podemos reduzir um pouco a altura para telas menores */
+      height: 40px;
+    }
+
+    .step-tab.is-active {
+      /* A aba ativa cresce 1.5x mais que as outras para manter a proporção */
+      flex: 1.5 1 0%;
+      height: 44px; /* Altura um pouco maior para a ativa */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .form-navigation {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .form-navigation .nav-button-group {
+      width: auto;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+
+    .radio-options {
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .step-tabs {
+      max-width: 300px;
+      gap: 8px;
+      padding: 0 6px;
+    }
+
+    .radio-options-horizontal .inline-option span {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      font-size: 0.875rem;
+    }
+
+    /* Esta única regra agora controla o empilhamento dos botões */
+    .radio-options:not(.radio-options-horizontal) .inline-option {
+      width: 100%;
+    }
+  }
+
+  /* Em styles.css - adicione este novo bloco no final do arquivo */
+
+  /* Em styles.css - adicione ou substitua este bloco no final do arquivo */
+
+  @media (max-width: 400px) {
+    /* Reduzimos o espaçamento entre as abas para economizar espaço */
+    .step-tabs {
+      gap: 8px;
+    }
+
+    /* Etapas INATIVAS: ficam bem pequenas */
+    .step-tab {
+      /* flex: grow shrink basis -> Não cresce, pode encolher, base de 40px */
+      flex: 0 1 40px;
+      height: 36px; /* Altura um pouco menor para economizar espaço vertical */
+    }
+
+    /* Etapa ATIVA: se expande para caber o texto */
+    .step-tab.is-active {
+      /* flex: grow shrink basis -> Pode crescer, não encolhe, largura automática */
+      flex: 1 0 auto;
+      height: 40px; /* Altura um pouco maior para destaque */
+      /* Adicionamos padding para o texto não ficar colado nas bordas */
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    /* Força o texto da aba ativa a ficar em uma única linha */
+    .step-tab.is-active span {
+      white-space: nowrap;
+    }
+  }
+
+  /* Em styles.css - adicione este novo bloco no final do arquivo */
+
+  @media (max-width: 768px) {
+    /* 1. Deixa os blocos de perguntas com cantos mais quadrados */
+    .fieldset {
+      border-radius: 0.75rem; /* Equivalente a 'rounded-xl' do Tailwind */
+    }
+
+    /* 2. Deixa os campos de resposta com cantos ainda mais quadrados */
+    .input {
+      border-radius: 0.5rem; /* Equivalente a 'rounded-lg' do Tailwind */
+    }
+
+    /* 3. Afeta APENAS os botões Sim/Não, deixando-os mais quadrados */
+    #dados_cliente .inline-option span {
+      border-radius: 0.75rem; /* Equivalente a 'rounded-xl' do Tailwind */
+    }
+  }
+}

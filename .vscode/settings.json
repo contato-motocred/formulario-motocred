@@ -1,0 +1,15 @@
+{{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["javascript", "javascriptreact", "html", "css"],
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "vue-html": "html",
+    "razor": "html",
+    "plaintext": "html"
+  },
+  "html-css-class-completion.enableEmmetSupport": true,
+  "editor.linkedEditing": true
+}
+
+}
