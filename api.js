@@ -1,4 +1,4 @@
-const API_URL = "https://motocred.digital";
+const API_URL = "https://api.motocred.digital";
 
 export async function preAnalysisRequest(data) {
   try {
