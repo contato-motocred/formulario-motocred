@@ -1,8 +1,8 @@
-const API_URL = "https://motocred.digital";
+const API_URL = "https://www.motocred.digital";
 
 export async function preAnalysisRequest(data) {
   try {
-    const response = await fetch(`${API_URL}/pre-analysis/`, {
+    const response = await fetch(`${API_URL}/pre-analysis`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -51,7 +51,7 @@ export async function calculateLoanRequest(data) {
 
 export async function createLoanRequest(data) {
   try {
-    const response = await fetch(`${API_URL}/loan/create/`, {
+    const response = await fetch(`${API_URL}/loan/create`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -74,7 +74,7 @@ export async function createLoanRequest(data) {
 }
 
 export async function analiseFinal(payload) {
-  const res = await fetch(`${API_URL}/final-analysis/`, {
+  const res = await fetch(`${API_URL}/final-analysis`, {
     method: "POST",
     body: payload,
   });
