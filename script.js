@@ -1263,7 +1263,7 @@ export async function enviarFinalAnalise(formFinal) {
 
       if (sugestoes.length > 0) {
         mensagemHTML +=
-          '<p class="mt-3">Para ser aprovado, sugerimos que você:</p>';
+          '<p style="font-weight: bold">Para ser aprovado, sugerimos que você:</p>';
 
         if (sugestoes.length == 1) {
           mensagemHTML += `
