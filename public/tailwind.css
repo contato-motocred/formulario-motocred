@@ -106,454 +106,6 @@
   --tw-contain-style:  ;
 }
 
-/*
-! tailwindcss v3.4.14 | MIT License | https://tailwindcss.com
-*/
-
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #e5e7eb;
-  /* 2 */
-}
-
-::before,
-::after {
-  --tw-content: '';
-}
-
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
-*/
-
-html,
-:host {
-  line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -moz-tab-size: 4;
-  /* 3 */
-  -o-tab-size: 4;
-     tab-size: 4;
-  /* 3 */
-  font-family: Segoe UI, Tahoma, Arial, sans-serif;
-  /* 4 */
-  font-feature-settings: normal;
-  /* 5 */
-  font-variation-settings: normal;
-  /* 6 */
-  -webkit-tap-highlight-color: transparent;
-  /* 7 */
-}
-
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
-
-body {
-  margin: 0;
-  /* 1 */
-  line-height: inherit;
-  /* 2 */
-}
-
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
-
-hr {
-  height: 0;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  border-top-width: 1px;
-  /* 3 */
-}
-
-/*
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
-
-abbr:where([title]) {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
-}
-
-/*
-Remove the default font size and weight for headings.
-*/
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-/*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-/*
-Add the correct font weight in Edge and Safari.
-*/
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-/*
-1. Use the user's configured `mono` font-family by default.
-2. Use the user's configured `mono` font-feature-settings by default.
-3. Use the user's configured `mono` font-variation-settings by default.
-4. Correct the odd `em` font sizing in all browsers.
-*/
-
-code,
-kbd,
-samp,
-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
-  font-feature-settings: normal;
-  /* 2 */
-  font-variation-settings: normal;
-  /* 3 */
-  font-size: 1em;
-  /* 4 */
-}
-
-/*
-Add the correct font size in all browsers.
-*/
-
-small {
-  font-size: 80%;
-}
-
-/*
-Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-*/
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/*
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-3. Remove gaps between table borders by default.
-*/
-
-table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
-}
-
-/*
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-3. Remove default padding in all browsers.
-*/
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-feature-settings: inherit;
-  /* 1 */
-  font-variation-settings: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  font-weight: inherit;
-  /* 1 */
-  line-height: inherit;
-  /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
-  color: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  padding: 0;
-  /* 3 */
-}
-
-/*
-Remove the inheritance of text transform in Edge and Firefox.
-*/
-
-button,
-select {
-  text-transform: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Remove default button styles.
-*/
-
-button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
-  -webkit-appearance: button;
-  /* 1 */
-  background-color: transparent;
-  /* 2 */
-  background-image: none;
-  /* 2 */
-}
-
-/*
-Use the modern Firefox focus style for all focusable elements.
-*/
-
-:-moz-focusring {
-  outline: auto;
-}
-
-/*
-Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-*/
-
-:-moz-ui-invalid {
-  box-shadow: none;
-}
-
-/*
-Add the correct vertical alignment in Chrome and Firefox.
-*/
-
-progress {
-  vertical-align: baseline;
-}
-
-/*
-Correct the cursor style of increment and decrement buttons in Safari.
-*/
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/*
-1. Correct the odd appearance in Chrome and Safari.
-2. Correct the outline style in Safari.
-*/
-
-[type='search'] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
-}
-
-/*
-Remove the inner padding in Chrome and Safari on macOS.
-*/
-
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to `inherit` in Safari.
-*/
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
-}
-
-/*
-Add the correct display in Chrome and Safari.
-*/
-
-summary {
-  display: list-item;
-}
-
-/*
-Removes the default spacing and border for appropriate elements.
-*/
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
-}
-
-fieldset {
-  margin: 0;
-  padding: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-ol,
-ul,
-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/*
-Reset default styling for dialogs.
-*/
-
-dialog {
-  padding: 0;
-}
-
-/*
-Prevent resizing textareas horizontally by default.
-*/
-
-textarea {
-  resize: vertical;
-}
-
-/*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 400 color.
-*/
-
-input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
-input::placeholder,
-textarea::placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
-/*
-Set the default cursor for buttons.
-*/
-
-button,
-[role="button"] {
-  cursor: pointer;
-}
-
-/*
-Make sure disabled buttons don't get the pointer cursor.
-*/
-
-:disabled {
-  cursor: default;
-}
-
-/*
-1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-   This can trigger a poorly considered lint error in some tools but is included by design.
-*/
-
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
-}
-
-/*
-Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-*/
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Make elements with the HTML hidden attribute stay hidden by default */
-
-[hidden]:where(:not([hidden="until-found"])) {
-  display: none;
-}
-
 [type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -749,346 +301,231 @@ select {
   outline: 1px auto -webkit-focus-ring-color;
 }
 
-body {
-  margin: 0px;
+body:not(.v2-mode) {
+  margin: 0;
+  padding: 28px;
+  /* min-height: 100vh; */
+  background-color: #f37521;
+  color: #f37521;
   display: flex;
-  min-height: 100vh;
+  justify-content: center;
   align-items: flex-start;
-  justify-content: center;
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 117 33 / var(--tw-bg-opacity));
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-family: Segoe UI, Tahoma, Arial, sans-serif;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+  font-family: "Segoe UI", "Tahoma", "Arial", sans-serif;
 }
 
-h1,
-  h2,
-  h3,
-  h4 {
-  font-family: Segoe UI, Tahoma, Arial, sans-serif;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+body:not(.v2-mode) .v1-shell {
+  /* bg, layout da V1 */
 }
 
-.\!container {
-  width: 100% !important;
+body:not(.v2-mode) .v1-shell h1,
+  body:not(.v2-mode) .v1-shell h2,
+  body:not(.v2-mode) .v1-shell h3,
+  body:not(.v2-mode) .v1-shell h4 {
+  font-family: "Segoe UI", "Tahoma", "Arial", sans-serif;
+  color: #f37521;
 }
 
-.container {
+.v1-shell .wrapper {
   width: 100%;
-}
-
-@media (min-width: 640px) {
-  .\!container {
-    max-width: 640px !important;
-  }
-
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .\!container {
-    max-width: 768px !important;
-  }
-
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .\!container {
-    max-width: 1024px !important;
-  }
-
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .\!container {
-    max-width: 1280px !important;
-  }
-
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .\!container {
-    max-width: 1536px !important;
-  }
-
-  .container {
-    max-width: 1536px;
-  }
-}
-
-.card {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  color: #f37521;
   border-radius: 2.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(255 237 213 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  border: 1px solid #f3d9c8;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.14);
+  padding: 3rem 4rem;
+}
+
+.v1-shell .card {
+  background-color: #ffffff;
+  border-radius: 2.25rem;
+  border: 1px solid #ffedd5;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.14);
   padding: 2rem;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
-  --tw-shadow: 0 28px 60px rgba(0, 0, 0, 0.14);
-  --tw-shadow-colored: 0 28px 60px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  color: #f37521;
+  /* min-width: 630px; */
 }
 
-.btn {
+.v1-shell .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0.75rem 1.5rem;
   border-radius: 9999px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
   font-weight: 600;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  cursor: pointer;
 }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.v1-shell .btn-primary {
+  border: 0px solid #f37521;
+  /* força a mesma cor em todo o contorno */
+  background-color: #f37521;
+  color: #ffffff;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-weight: 600;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 117 33 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  cursor: pointer;
 }
 
-.btn-primary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(212 99 28 / var(--tw-bg-opacity));
+.v1-shell .btn-primary:hover {
+  background-color: #d4631c;
 }
 
-.btn-primary:focus-visible {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(249 152 87 / var(--tw-ring-opacity));
+.v1-shell .btn-primary:focus-visible {
+  outline: none;
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.v1-shell .btn-secondary {
+  border: 1px solid #f37521;
+  /* força a mesma cor em todo o contorno */
+  color: #f37521;
+  background-color: #ffffff;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  font-weight: 600;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(243 117 33 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+  cursor: pointer;
 }
 
-.btn-secondary:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 243 235 / var(--tw-bg-opacity));
+.v1-shell .btn-secondary:hover {
+  background-color: #fff3eb;
 }
 
 /* Adiciona estilo para o botão secundário quando desabilitado */
 
-.btn-secondary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.v1-shell .btn-secondary:disabled {
+  opacity: 0;
+  cursor: default;
 }
 
-.\!fieldset {
+.v1-shell fieldset {
+  display: block;
   border-radius: 28px;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(207 189 175 / var(--tw-border-opacity));
+  border: 1px solid #cfbdaf;
   background-color: #a36a343d;
   padding: 2rem;
-  --tw-text-opacity: 1;
-  color: rgb(90 64 51 / var(--tw-text-opacity));
-  --tw-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
-  --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.fieldset {
-  border-radius: 28px;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(207 189 175 / var(--tw-border-opacity));
-  background-color: #a36a343d;
-  padding: 2rem;
-  --tw-text-opacity: 1;
-  color: rgb(90 64 51 / var(--tw-text-opacity));
-  --tw-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
-  --tw-shadow-colored: inset 0 0 0 1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.\!fieldset {
+  color: #5a4033;
   /*
     monitor AMOLED: border #f0d9c8  bg #fff5ec
     monitor LCD:  border #cfbdaf  bg #a36a343d
     */
 }
 
-.fieldset {
-  /*
-    monitor AMOLED: border #f0d9c8  bg #fff5ec
-    monitor LCD:  border #cfbdaf  bg #a36a343d
-    */
-}
-
-.legend {
+.v1-shell .legend {
   font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+  color: #f37521;
 }
 
-.\!input {
+.v1-shell .input {
   display: block;
   width: 100%;
+  box-sizing: border-box;
+  /* <- garante que o padding conte dentro dos 100% */
   border-radius: 0.75rem;
-  --tw-border-opacity: 1;
-  border-color: rgb(163 163 163 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(38 38 38 / var(--tw-text-opacity));
+  border: 1px solid #a3a3a3;
+  color: #262626;
+  background-color: #fff;
+  padding: 0.65rem 1rem;
 }
 
-.\!input:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(243 117 33 / var(--tw-border-opacity));
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(243 117 33 / var(--tw-ring-opacity));
-}
-
-.input {
-  display: block;
-  width: 100%;
-  border-radius: 0.75rem;
-  --tw-border-opacity: 1;
-  border-color: rgb(163 163 163 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  --tw-text-opacity: 1;
-  color: rgb(38 38 38 / var(--tw-text-opacity));
-}
-
-.input:focus {
-  --tw-border-opacity: 1;
-  border-color: rgb(243 117 33 / var(--tw-border-opacity));
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(243 117 33 / var(--tw-ring-opacity));
+.v1-shell .input:focus {
+  outline: none;
+  border-color: #f37521;
+  box-shadow: 0 0 0 1px rgba(243, 117, 33, 0.4);
 }
 
 /* Em styles.css */
 
-#valor_entrada::-moz-placeholder {
-  color: #5A4033;
+.v1-shell #valor_entrada::-moz-placeholder {
+  color: #5a4033;
   /* Mesma cor do texto do fieldset */
   opacity: 0.7;
   /* Opacidade reduzida */
 }
 
-#valor_entrada::placeholder {
-  color: #5A4033;
+.v1-shell #valor_entrada::placeholder {
+  color: #5a4033;
   /* Mesma cor do texto do fieldset */
   opacity: 0.7;
   /* Opacidade reduzida */
 }
 
-.radio-pill {
+.v1-shell .radio-pill {
   display: inline-flex;
-  cursor: pointer;
   align-items: center;
   justify-content: center;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(212 212 212 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  border: 1px solid #d4d4d4;
+  background-color: #ffffff;
   font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(38 38 38 / var(--tw-text-opacity));
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  color: #f37521;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.header {
-  margin-bottom: 1rem;
+.v1-shell .radio-pill-checked {
+  background-color: #f37521;
+  border-color: #f37521;
+  color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.v1-shell .step-dot {
+  height: 0.25rem;
+  width: 3.5rem;
+  border-radius: 9999px;
+  background-color: #ffedd5;
+}
+
+.v1-shell .step-dot-complete {
+  height: 0.25rem;
+  width: 3.5rem;
+  border-radius: 9999px;
+  background-color: #f37521;
+}
+
+.v1-shell .step-pill-active {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background-color: #f37521;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.v1-shell .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
-.img_logo {
+.v1-shell .img_logo {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  height: auto;
-  width: 100%;
-  max-width: 220px;
 }
 
-.hero {
-  margin-bottom: 2rem;
+.v1-shell .hero {
   text-align: center;
+  margin-bottom: 2rem;
 }
 
-#titulo_pagina {
-  margin: 0px;
+.v1-shell #titulo_pagina {
   font-size: 2rem;
   font-weight: 600;
+  color: #f37521;
   letter-spacing: 0.02em;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+  margin: 0;
 }
 
 /* ------------------------------------------- */
@@ -1097,13 +534,23 @@ h1,
 
 /* ------------------------------------------- */
 
-#texto-confirmacao {
+.v1-shell #texto-confirmacao {
   font-size: 20px;
   line-height: 1.6;
-  color: #F37521 !important;
+  color: #f37521 !important;
 }
 
 /* 2. O ÍCONE DE CHECK VAI USAR A MESMA ALTURA */
+
+.v1-shell .check-icon {
+  /* ?? Use a mesma altura definida no item 1 */
+  height: auto !important;
+  width: 90px !important;
+  /* ESSENCIAL: Garante que a largura seja proporcional */
+  display: block !important;
+  /* Regras de centralização */
+  margin: 16px auto 0 !important;
+}
 
 /* ======================================================================== */
 
@@ -1111,10 +558,10 @@ h1,
 
 /* ======================================================================== */
 
-#etapas_processo {
-  margin-bottom: 2.5rem;
-  display: flex;
+.v1-shell #etapas_processo {
+  margin-bottom: 1rem;
   width: 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
@@ -1123,40 +570,37 @@ h1,
 
 /* O contêiner que segura as 4 abas */
 
-.step-tabs {
-  display: flex;
+.v1-shell .step-tabs {
   width: 100%;
   max-width: 520px;
-  align-items: center;
+  display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
 /* A base para CADA UMA das 4 abas (TAMANHO X) */
 
-.step-tab {
+.v1-shell .step-tab {
   height: 44px;
   /* Define uma LARGURA FIXA de 99px, impedindo que o texto a alargue */
   flex: 0 0 70px;
-  position: relative;
   display: flex;
-  cursor: pointer;
-  align-items: center;
   justify-content: center;
-  border-width: 0px;
-  background-color: transparent;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  align-items: center;
   text-align: center;
+  position: relative;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
   /* Anima a mudança de altura e largura */
   transition: flex-basis 0.4s ease, height 0.4s ease;
 }
 
 /* A aba ATIVA (TAMANHO Y) */
 
-.step-tab.is-active {
+.v1-shell .step-tab.is-active {
   height: 50px;
   /* Define uma LARGURA FIXA e MAIOR de 109px para a aba ativa */
   flex: 0 0 129px;
@@ -1164,29 +608,27 @@ h1,
 
 /* O texto (<span>) dentro de cada aba */
 
-.step-tab span {
+.v1-shell .step-tab span {
   display: none;
 }
 
 /* O texto (<span>) dentro da aba ATIVA */
 
-.step-tab.is-active span {
+.v1-shell .step-tab.is-active span {
   display: inline-block;
+  color: #ffffff;
   font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-  position: relative;
-  z-index: 1;
   line-height: 1.2;
   /* Bom para textos com quebra de linha */
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
 }
 
 /* O fundo de CADA aba (formato de barrinha) */
 
-.step-tab::after {
-  content: '';
+.v1-shell .step-tab::after {
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
@@ -1194,21 +636,21 @@ h1,
   height: 6px;
   transform: translateY(-50%);
   border-radius: 999px;
-  background-color: #F8E5DB;
+  background-color: #f8e5db;
   transition: all 0.3s ease;
   z-index: 0;
 }
 
 /* Cor laranja para abas ATIVAS ou COMPLETAS */
 
-.step-tab.is-active::after,
-.step-tab.is-complete::after {
-  background-color: #F37521;
+.v1-shell .step-tab.is-active::after,
+  .v1-shell .step-tab.is-complete::after {
+  background-color: #f37521;
 }
 
 /* Expansão do fundo para a aba ATIVA (formato de pílula) */
 
-.step-tab.is-active::after {
+.v1-shell .step-tab.is-active::after {
   top: 0;
   bottom: 0;
   height: auto;
@@ -1218,22 +660,22 @@ h1,
 
 /* Novo estado para abas que foram puladas, mas devem ser marcadas como concluídas */
 
-.step-tab.is-skipped-complete::after {
-  background-color: #F37521;
+.v1-shell .step-tab.is-skipped-complete::after {
+  background-color: #f37521;
   /* Laranja */
 }
 
 /* Estilos de abas desabilitadas e de foco */
 
-.step-tab:disabled {
+.v1-shell .step-tab:disabled {
   cursor: default;
 }
 
-.step-tab:focus-visible {
+.v1-shell .step-tab:focus-visible {
   outline: none;
 }
 
-.step-tab:focus-visible::after {
+.v1-shell .step-tab:focus-visible::after {
   box-shadow: 0 0 0 3px rgba(243, 117, 33, 0.35);
 }
 
@@ -1243,92 +685,98 @@ h1,
 
 /* ======================================================================== */
 
-.step-current-label {
+.v1-shell .step-current-label {
   margin-top: 0.375rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: #ffffff;
 }
 
 /* .step-current-label { display: none; } */
 
-.main {
+.v1-shell .main {
   display: flex;
   flex-direction: column;
 }
 
-.main form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.form-steps {
+.v1-shell .main form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-.form-step {
+.v1-shell .form-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.v1-shell .form-step {
   display: none;
 }
 
-.form-step.is-active {
+.v1-shell .form-step.is-active {
   display: block;
 }
 
-.form-step.is-hidden-step {
+.v1-shell .form-step.is-hidden-step {
   display: none !important;
 }
 
-fieldset label {
-  margin-top: 1rem;
+.v1-shell fieldset label {
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
   font-size: 0.95rem;
+  gap: 0.375rem;
+  margin-top: 1rem;
+  color: #333333;
   font-weight: 500;
-  --tw-text-opacity: 1;
-  color: rgb(51 51 51 / var(--tw-text-opacity));
 }
 
-fieldset label:first-of-type {
+.v1-shell fieldset label:first-of-type {
   margin-top: 0;
 }
 
-.radio-label {
-  margin-top: 1rem;
+.v1-shell .radio-label {
   display: block;
+  margin-top: 1rem;
   font-weight: 600;
-  --tw-text-opacity: 1;
-  color: rgb(51 51 51 / var(--tw-text-opacity));
+  color: #333333;
 }
 
-.radio-options {
-  margin-top: 1rem;
+.v1-shell .field-hint {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: #5b3921;
+  margin-top: 0.375rem;
+  margin-bottom: 0.375rem;
+}
+
+.v1-shell .radio-options {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-.fieldset-radio .radio-options {
+.v1-shell .fieldset-radio .radio-options {
   justify-content: center;
   gap: 1.5rem;
 }
 
-.inline-option {
+.v1-shell .inline-option {
   position: relative;
-  margin-top: 0px;
   display: inline-flex;
   align-items: center;
-  padding: 0px;
+  margin-top: 0;
+  padding: 0;
 }
 
-.inline-option input[type="radio"] {
+.v1-shell .inline-option input[type="radio"] {
   position: absolute;
   inset: 0;
   opacity: 0;
@@ -1336,99 +784,94 @@ fieldset label:first-of-type {
   cursor: pointer;
 }
 
-.inline-option span {
+.v1-shell .inline-option span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0.75rem 1.75rem;
   border-radius: 9999px;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(163 163 163 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  border: 1px solid #a3a3a3;
+  background-color: #ffffff;
+  color: #f37521;
   font-weight: 600;
   letter-spacing: 0.01em;
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
+  transition: all 0.2s ease;
 }
 
-.inline-option input[type="radio"]:checked + span {
-  background-color: #F37521;
-  border-color: #F37521;
+.v1-shell .inline-option input[type="radio"]:checked + span {
+  background-color: #f37521;
+  border-color: #f37521;
   color: #ffffff;
 }
 
-.inline-option input[type="radio"]:focus-visible + span {
+.v1-shell .inline-option input[type="radio"]:focus-visible + span {
   box-shadow: 0 0 0 3px rgba(243, 117, 33, 0.35);
 }
 
-.inline-option input[type="radio"]:not(:checked) + span:hover {
+.v1-shell .inline-option input[type="radio"]:not(:checked) + span:hover {
   border-color: #dca77c;
   background-color: #fff3eb;
   color: #d86216;
 }
 
-.form-navigation {
+.v1-shell .is-hidden,
+  .v1-shell fieldset.is-hidden {
+  display: none !important;
+}
+
+.v1-shell .form-navigation {
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 
-.form-navigation .nav-button-group {
-  margin-left: auto;
+.v1-shell .form-navigation .nav-button-group {
   display: flex;
   gap: 0.75rem;
+  margin-left: auto;
 }
 
 /* Em styles.css */
 
 /* Garante que este grupo específico fique sempre na horizontal e centralizado */
 
-.radio-options-horizontal {
+.v1-shell .radio-options-horizontal {
   flex-direction: row !important;
   justify-content: center !important;
 }
 
 /* Deixa o texto dos botões Sim/Não preto por padrão */
 
-.radio-options-horizontal .radio-pill {
+.v1-shell .radio-options-horizontal .radio-pill {
   color: black;
 }
 
-/* Em styles.css - Adicione esta nova regra */
-
-/* Sobrescreve a cor do texto para o estado checado (.radio-pill-checked) */
-
-/* Isso usa a mesma cor da classe 'text-brand' que define o título. */
-
-/* Em styles.css - Adicione esta nova regra */
-
-/* Altera a cor do texto padrão (não-selecionado) APENAS nos botões Comprador/Vendedor */
-
-/* O seletor mira o span.radio-pill dentro da primeira etapa do formulário. */
-
-.form-steps .form-step[data-step="1"] .radio-pill {
-  /* Aplica a cor da marca (text-brand) ao texto do botão, por padrão. */
-  --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+.v1-shell .radio-options-horizontal .radio-pill.radio-pill-checked {
+  color: #ffffff;
 }
 
-.form-steps .form-step[data-step="1"] .radio-pill.radio-pill-checked {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-  /* ESPECIFICIDADE MÁXIMA */
+.v1-shell
+    .form-steps
+    .form-step[data-step="1"]
+    .radio-options-horizontal
+    .radio-pill {
+  color: #f37521;
 }
 
-#dados-venda {
+.v1-shell
+    .form-steps
+    .form-step[data-step="1"]
+    .radio-options-horizontal
+    .inline-option
+    input[type="radio"]:checked
+    + span {
+  color: #ffffff;
+}
+
+.v1-shell #dados-venda {
   background-color: #f5f2f0;
   /* ou o mesmo fundo escuro que você já usa */
   border-radius: 1rem;
@@ -1436,36 +879,315 @@ fieldset label:first-of-type {
   position: relative;
 }
 
-#erro_dados_venda {
+.v1-shell #erro_dados_venda {
   animation: aparecerErro 0.3s ease;
+  margin-top: 1rem;
+  /* mt-4 */
+  border-radius: 0.75rem;
+  /* rounded-md */
+  border: 1px solid #fecaca;
+  /* border-red-200 */
+  background-color: #fef2f2;
+  /* bg-red-50 */
+  padding: 0.75rem 1rem;
+  /* px-4 py-3 */
+  font-size: 0.875rem;
+  /* text-sm */
+  color: #b91c1c;
 }
 
-@keyframes aparecerErro {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.v1-shell .hidden {
+  display: none !important;
 }
 
-/* Força espaçamento maior entre os blocos da etapa "Dados da Venda" */
+/* WRAPPER PARA TIRAR DESIGN DO BODY NA V2*/
 
-/* src/styles.css */
+/* no final do styles.css */
 
-#dados_venda .grid > :nth-child(2) {
-  margin-top: 1.5rem !important;
+/* no final do styles.css */
+
+.v2-wrapper {
+  display: block;
+  font-family: Inter, system-ui, sans-serif;
+  /* color: #111 !important; */
 }
 
-/* ~32px */
+.v2-wrapper,
+  .v2-wrapper * {
+  box-sizing: border-box;
+}
+
+.v2-wrapper h1,
+  .v2-wrapper h2,
+  .v2-wrapper h3,
+  .v2-wrapper h4 {
+  /* color: inherit; */
+}
+
+/* Quando o body estiver em modo V2, zera o estilo global dele */
+
+body.v2-mode {
+  background: transparent !important;
+  color: initial !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* ========= Range V2 (puro CSS) ========= */
+
+/* Base */
+
+input.v2-range {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+input.v2-range:focus {
+  outline: none;
+}
+
+/* WebKit (Chrome/Edge/Safari) */
+
+input.v2-range::-webkit-slider-runnable-track {
+  height: 7px;
+  border-radius: 9999px;
+  background: linear-gradient(
+      to right,
+      #000 var(--pct, 0%),
+      #d1d5db var(--pct, 0%)
+    );
+}
+
+input.v2-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* MUDANÇAS: Cor e Borda */
+  background: white;
+  border: 2px solid #000;
+  /* FIM MUDANÇAS */
+  margin-top: -6px;
+  /* Ajustado para centralizar com a borda de 2px */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Firefox */
+
+input.v2-range::-moz-range-track {
+  height: 7px;
+  border-radius: 9999px;
+  background: #d1d5db;
+}
+
+input.v2-range::-moz-range-progress {
+  height: 7px;
+  border-radius: 9999px;
+  background: #000;
+}
+
+input.v2-range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  /* MUDANÇAS: Cor e Borda */
+  background: white;
+  border: 2px solid #000;
+  /* FIM MUDANÇAS */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* (Opcional) Especificidade máxima por id */
+
+#valor-moto.v2-range,
+  #valor-entrada.v2-range {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+}
+
+/* ============================================================= */
+
+/* ?? Correção: restabelece o escopo visual da V2 (Form Final)   */
+
+/* ============================================================= */
+
+body.v2-mode {
+  background-color: #d9d9d9 !important;
+}
+
+#form-final.v2-wrapper {
+  position: relative;
+  /* ? não fixo */
+  min-height: 100vh;
+  /* altura mínima da viewport */
+  background-color: #d9d9d9 !important;
+  font-family: Inter, system-ui, sans-serif;
+  color: #111;
+  overflow-y: auto;
+  /* ? permite rolagem */
+  overflow-x: hidden;
+  z-index: 1;
+  /* só pra manter acima do fundo */
+}
+
+/* Força o Tailwind prefixado (v2-) a prevalecer dentro do form */
+
+#form-final.v2-wrapper * {
+  font-family: inherit !important;
+  box-sizing: border-box !important;
+}
+
+#form-final .nav-prev {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+#form-final .nav-next {
+  background-color: #000;
+  color: #fff;
+}
+
+#form-final footer p {
+  text-align: center;
+}
+
+/* TA DANDO ALGUM BUG COM AS CORES DAS BORDAS ENTAO TO DEFININDO AQUI */
+
+/* #form-final input["text"] {
+    border-top: 1px solid #6b7280;
+    border-right: 1px solid #6b7280;
+    border-bottom: 1px solid #6b7280;
+    border-left: 1px solid #6b7280;
+  } */
+
+/* ================================ */
+
+/* FORM FINAL - BARRA DE ETAPAS     */
+
+/* ================================ */
+
+#form-final .final-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  min-height: 36px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.final-step-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #c7c7c7 !important;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  overflow: hidden;
+  position: relative;
+  opacity: 1;
+  align-self: center;
+}
+
+.final-step-tab span {
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.final-step-tab.is-active {
+  min-width: 140px;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background-color: #000 !important;
+}
+
+.final-step-tab.is-complete {
+  background-color: #000 !important;
+}
+
+.final-step-tab.is-complete span {
+  display: none !important;
+}
+
+.final-step-tab.is-active span,
+  .final-step-tab.is-complete span {
+  display: inline;
+  font-size: 0.9rem;
+}
+
+.final-step-tab[aria-disabled="true"] {
+  cursor: default;
+  pointer-events: none;
+}
+
+#form-final .final-step-current-label {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+#form-final .form-navigation.final-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#form-final footer .form-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#form-final footer .nav-prev {
+  margin-right: auto;
+}
+
+#form-final footer .nav-button-group {
+  margin-left: auto;
+}
+
+/* Dentro de @layer components ou no final do arquivo */
+
+.hint-text {
+  /* Exemplo de estilo que você pode adicionar */
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+}
 
 /* No mobile, podemos diminuir um pouco os botões para garantir que caibam */
 
 @media (max-width: 480px) {
-  .radio-options-horizontal .radio-pill {
+  .v1-shell .radio-options-horizontal .radio-pill {
     padding-left: 1.25rem;
     /* px-5 */
     padding-right: 1.25rem;
@@ -1474,20 +1196,20 @@ fieldset label:first-of-type {
 }
 
 @media (max-width: 768px) {
-  .step-tabs {
+  .v1-shell .step-tabs {
     max-width: 360px;
     padding: 0 10px;
     gap: 12px;
   }
 
-  .step-tab {
+  .v1-shell .step-tab {
     /* No mobile, trocamos a largura fixa por um modelo flexível */
     flex: 1 1 0%;
     /* Também podemos reduzir um pouco a altura para telas menores */
     height: 40px;
   }
 
-  .step-tab.is-active {
+  .v1-shell .step-tab.is-active {
     /* A aba ativa cresce 1.5x mais que as outras para manter a proporção */
     flex: 1.5 1 0%;
     height: 44px;
@@ -1496,32 +1218,32 @@ fieldset label:first-of-type {
 }
 
 @media (max-width: 600px) {
-  .form-navigation {
+  .v1-shell .form-navigation {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
 
-  .form-navigation .nav-button-group {
+  .v1-shell .form-navigation .nav-button-group {
     width: auto;
     margin-left: auto;
     justify-content: flex-end;
   }
 
-  .radio-options {
+  .v1-shell .radio-options {
     gap: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .step-tabs {
+  .v1-shell .step-tabs {
     max-width: 300px;
     gap: 8px;
     padding: 0 6px;
   }
 
-  .radio-options-horizontal .inline-option span {
+  .v1-shell .radio-options-horizontal .inline-option span {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     font-size: 0.875rem;
@@ -1529,7 +1251,7 @@ fieldset label:first-of-type {
 
   /* Esta única regra agora controla o empilhamento dos botões */
 
-  .radio-options:not(.radio-options-horizontal) .inline-option {
+  .v1-shell .radio-options:not(.radio-options-horizontal) .inline-option {
     width: 100%;
   }
 }
@@ -1541,13 +1263,13 @@ fieldset label:first-of-type {
 @media (max-width: 400px) {
   /* Reduzimos o espaçamento entre as abas para economizar espaço */
 
-  .step-tabs {
+  .v1-shell .step-tabs {
     gap: 8px;
   }
 
   /* Etapas INATIVAS: ficam bem pequenas */
 
-  .step-tab {
+  .v1-shell .step-tab {
     /* flex: grow shrink basis -> Não cresce, pode encolher, base de 40px */
     flex: 0 1 40px;
     height: 36px;
@@ -1556,7 +1278,7 @@ fieldset label:first-of-type {
 
   /* Etapa ATIVA: se expande para caber o texto */
 
-  .step-tab.is-active {
+  .v1-shell .step-tab.is-active {
     /* flex: grow shrink basis -> Pode crescer, não encolhe, largura automática */
     flex: 1 0 auto;
     height: 40px;
@@ -1568,7 +1290,7 @@ fieldset label:first-of-type {
 
   /* Força o texto da aba ativa a ficar em uma única linha */
 
-  .step-tab.is-active span {
+  .v1-shell .step-tab.is-active span {
     white-space: nowrap;
   }
 }
@@ -1578,234 +1300,685 @@ fieldset label:first-of-type {
 @media (max-width: 768px) {
   /* 1. Deixa os blocos de perguntas com cantos mais quadrados */
 
-  .\!fieldset {
-    border-radius: 0.75rem !important;
-    /* Equivalente a 'rounded-xl' do Tailwind */
-  }
-
-  /* 2. Deixa os campos de resposta com cantos ainda mais quadrados */
-
-   {
-    border-radius: 0.5rem !important;
-    /* Equivalente a 'rounded-lg' do Tailwind */
-  }
-
-  /* 3. Afeta APENAS os botões Sim/Não, deixando-os mais quadrados */
-
-   {
-    border-radius: 0.75rem !important;
-    /* Equivalente a 'rounded-xl' do Tailwind */
-  }
-
-  /* 1. Deixa os blocos de perguntas com cantos mais quadrados */
-
-  .fieldset {
+  .v1-shell .fieldset {
     border-radius: 0.75rem;
     /* Equivalente a 'rounded-xl' do Tailwind */
   }
 
   /* 2. Deixa os campos de resposta com cantos ainda mais quadrados */
 
-  .input {
+  .v1-shell .input {
     border-radius: 0.5rem;
     /* Equivalente a 'rounded-lg' do Tailwind */
   }
 
   /* 3. Afeta APENAS os botões Sim/Não, deixando-os mais quadrados */
 
-  #dados_cliente .inline-option span {
+  .v1-shell #dados_cliente .inline-option span {
     border-radius: 0.75rem;
     /* Equivalente a 'rounded-xl' do Tailwind */
   }
-
-  /* 1. Deixa os blocos de perguntas com cantos mais quadrados */
-
-   {
-    border-radius: 0.75rem !important;
-    /* Equivalente a 'rounded-xl' do Tailwind */
-  }
-
-  /* 2. Deixa os campos de resposta com cantos ainda mais quadrados */
-
-  .\!input {
-    border-radius: 0.5rem !important;
-    /* Equivalente a 'rounded-lg' do Tailwind */
-  }
-
-  /* 3. Afeta APENAS os botões Sim/Não, deixando-os mais quadrados */
-
-   {
-    border-radius: 0.75rem !important;
-    /* Equivalente a 'rounded-xl' do Tailwind */
-  }
 }
 
-.sr-only {
+.v2-visible {
+  visibility: visible;
+}
+
+.v2-fixed {
+  position: fixed;
+}
+
+.v2-absolute {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
-.mt-4 {
+.v2-relative {
+  position: relative;
+}
+
+.v2-inset-0 {
+  inset: 0px;
+}
+
+.v2--top-3 {
+  top: -0.75rem;
+}
+
+.v2-left-6 {
+  left: 1.5rem;
+}
+
+.v2-right-2 {
+  right: 0.5rem;
+}
+
+.v2-top-20 {
+  top: 5rem;
+}
+
+.v2-z-50 {
+  z-index: 50;
+}
+
+.v2-mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.v2-mb-8 {
+  margin-bottom: 2rem;
+}
+
+.v2-ml-2 {
+  margin-left: 0.5rem;
+}
+
+.v2-mt-1 {
+  margin-top: 0.25rem;
+}
+
+.v2-mt-2 {
+  margin-top: 0.5rem;
+}
+
+.v2-mt-4 {
   margin-top: 1rem;
 }
 
-.flex {
+.v2-inline {
+  display: inline;
+}
+
+.v2-flex {
   display: flex;
 }
 
-.grid {
-  display: grid;
+.v2-inline-flex {
+  display: inline-flex;
 }
 
-.hidden {
+.v2-hidden {
   display: none;
 }
 
-.h-full {
-  height: 100%;
+.v2-min-h-\[260px\] {
+  min-height: 260px;
 }
 
-.min-h-svh {
-  min-height: 100svh;
+.v2-min-h-screen {
+  min-height: 100vh;
 }
 
-.w-full {
+.v2-w-1\/2 {
+  width: 50%;
+}
+
+.v2-w-80 {
+  width: 20rem;
+}
+
+.v2-w-full {
   width: 100%;
 }
 
-.max-w-\[820px\] {
-  max-width: 820px;
+.v2-max-w-2xl {
+  max-width: 42rem;
 }
 
-.flex-col {
+.v2-flex-1 {
+  flex: 1 1 0%;
+}
+
+.v2-cursor-pointer {
+  cursor: pointer;
+}
+
+.v2-flex-row {
+  flex-direction: row;
+}
+
+.v2-flex-col {
   flex-direction: column;
 }
 
-.items-stretch {
-  align-items: stretch;
+.v2-items-start {
+  align-items: flex-start;
 }
 
-.justify-center {
+.v2-items-end {
+  align-items: flex-end;
+}
+
+.v2-items-center {
+  align-items: center;
+}
+
+.v2-items-baseline {
+  align-items: baseline;
+}
+
+.v2-justify-start {
+  justify-content: flex-start;
+}
+
+.v2-justify-center {
   justify-content: center;
 }
 
-.gap-6 {
-  gap: 1.5rem;
+.v2-justify-between {
+  justify-content: space-between;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-2 {
-  gap: 0.5rem;
-}
-
-.gap-1 {
+.v2-gap-1 {
   gap: 0.25rem;
 }
 
-.rounded-md {
-  border-radius: 0.375rem;
+.v2-gap-2 {
+  gap: 0.5rem;
 }
 
-.border {
+.v2-gap-3 {
+  gap: 0.75rem;
+}
+
+.v2-gap-4 {
+  gap: 1rem;
+}
+
+.v2-gap-8 {
+  gap: 2rem;
+}
+
+.-v2-space-y-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(-4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(-4rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-16 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.v2-space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.v2-overflow-auto {
+  overflow: auto;
+}
+
+.v2-rounded-2xl {
+  border-radius: 1rem;
+}
+
+.v2-rounded-\[10px\] {
+  border-radius: 10px;
+}
+
+.v2-rounded-tr-none {
+  border-top-right-radius: 0px;
+}
+
+.v2-border {
   border-width: 1px;
 }
 
-.border-red-200 {
+.v2-border-0 {
+  border-width: 0px;
+}
+
+.v2-border-2 {
+  border-width: 2px;
+}
+
+.v2-border-b-0 {
+  border-bottom-width: 0px;
+}
+
+.v2-border-l-\[2px\] {
+  border-left-width: 2px;
+}
+
+.v2-border-r-0 {
+  border-right-width: 0px;
+}
+
+.v2-border-t-0 {
+  border-top-width: 0px;
+}
+
+.v2-border-solid {
+  border-style: solid;
+}
+
+.v2-border-\[\#0CAD11\] {
   --tw-border-opacity: 1;
-  border-color: rgb(254 202 202 / var(--tw-border-opacity));
+  border-color: rgb(12 173 17 / var(--tw-border-opacity));
 }
 
-.bg-brand {
+.v2-border-\[\#D11B1B\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 27 27 / var(--tw-border-opacity));
+}
+
+.v2-border-\[\#F2600B\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(242 96 11 / var(--tw-border-opacity));
+}
+
+.v2-border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+
+.v2-bg-\[\#0CAD11\]\/15 {
+  background-color: rgb(12 173 17 / 0.15);
+}
+
+.v2-bg-\[\#D11B1B\]\/15 {
+  background-color: rgb(209 27 27 / 0.15);
+}
+
+.v2-bg-\[\#D9D9D9\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 117 33 / var(--tw-bg-opacity));
+  background-color: rgb(217 217 217 / var(--tw-bg-opacity));
 }
 
-.bg-red-50 {
+.v2-bg-\[\#E0E0E0\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 242 242 / var(--tw-bg-opacity));
+  background-color: rgb(224 224 224 / var(--tw-bg-opacity));
 }
 
-.p-6 {
+.v2-bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.v2-bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.v2-bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.v2-bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.v2-p-2 {
+  padding: 0.5rem;
+}
+
+.v2-p-3 {
+  padding: 0.75rem;
+}
+
+.v2-p-4 {
+  padding: 1rem;
+}
+
+.v2-p-6 {
   padding: 1.5rem;
 }
 
-.px-4 {
+.v2-px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.v2-py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.v2-pb-14 {
+  padding-bottom: 3.5rem;
+}
+
+.v2-pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.v2-pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.v2-pb-8 {
+  padding-bottom: 2rem;
+}
+
+.v2-pl-14 {
+  padding-left: 3.5rem;
+}
+
+.v2-pl-4 {
   padding-left: 1rem;
-  padding-right: 1rem;
 }
 
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+.v2-pl-6 {
+  padding-left: 1.5rem;
 }
 
-.text-sm {
+.v2-pl-8 {
+  padding-left: 2rem;
+}
+
+.v2-pr-14 {
+  padding-right: 3.5rem;
+}
+
+.v2-pr-6 {
+  padding-right: 1.5rem;
+}
+
+.v2-pr-8 {
+  padding-right: 2rem;
+}
+
+.v2-pt-1 {
+  padding-top: 0.25rem;
+}
+
+.v2-pt-2 {
+  padding-top: 0.5rem;
+}
+
+.v2-pt-4 {
+  padding-top: 1rem;
+}
+
+.v2-pt-8 {
+  padding-top: 2rem;
+}
+
+.v2-text-left {
+  text-align: left;
+}
+
+.v2-text-center {
+  text-align: center;
+}
+
+.v2-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.v2-text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.v2-text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.v2-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.font-medium {
+.v2-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.v2-text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.v2-font-bold {
+  font-weight: 700;
+}
+
+.v2-font-medium {
   font-weight: 500;
 }
 
-.text-red-700 {
+.v2-font-semibold {
+  font-weight: 600;
+}
+
+.v2-leading-none {
+  line-height: 1;
+}
+
+.v2-text-\[\#0CAD11\] {
   --tw-text-opacity: 1;
-  color: rgb(185 28 28 / var(--tw-text-opacity));
+  color: rgb(12 173 17 / var(--tw-text-opacity));
 }
 
-.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+.v2-text-\[\#1D46CE\] {
+  --tw-text-opacity: 1;
+  color: rgb(29 70 206 / var(--tw-text-opacity));
 }
 
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+.v2-text-\[\#F2600B\] {
+  --tw-text-opacity: 1;
+  color: rgb(242 96 11 / var(--tw-text-opacity));
+}
+
+.v2-text-black\/50 {
+  color: rgb(0 0 0 / 0.5);
+}
+
+.v2-text-black\/60 {
+  color: rgb(0 0 0 / 0.6);
+}
+
+.v2-text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.v2-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.v2-text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.v2-text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.v2-opacity-100 {
+  opacity: 1;
+}
+
+.v2-opacity-50 {
+  opacity: 0.5;
+}
+
+.v2-transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.v2-duration-300 {
+  transition-duration: 300ms;
+}
+
+.v2-ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Componentes com visual alinhado ao design atual */
 
-.peer:checked ~ .peer-checked\:radio-pill-checked {
-  --tw-border-opacity: 1;
-  border-color: rgb(243 117 33 / var(--tw-border-opacity));
+.v1-shell .v2-peer:checked ~ .peer-checked\:radio-pill-checked {
+  background-color: #f37521;
+  border-color: #f37521;
+  color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+      0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.v1-shell .radio-options-horizontal .v2-peer:checked ~ .peer-checked\:radio-pill-checked.radio-pill {
+  color: #ffffff;
+}
+
+.file\:v2-mr-3::file-selector-button {
+  margin-right: 0.75rem;
+}
+
+.file\:v2-rounded-l-lg::file-selector-button {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.file\:v2-rounded-r-none::file-selector-button {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.file\:v2-border-0::file-selector-button {
+  border-width: 0px;
+}
+
+.file\:v2-bg-\[\#A5A3A3\]::file-selector-button {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 117 33 / var(--tw-bg-opacity));
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  /* @apply é uma diretiva do Tailwind para aplicar utilitários dentro do CSS customizado. */
-  /* Isso garante que a cor do texto seja a cor principal do seu site. */
+  background-color: rgb(165 163 163 / var(--tw-bg-opacity));
+}
+
+.file\:v2-px-4::file-selector-button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.file\:v2-py-2::file-selector-button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.file\:v2-text-sm::file-selector-button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.file\:v2-font-medium::file-selector-button {
+  font-weight: 500;
+}
+
+.file\:v2-text-white::file-selector-button {
   --tw-text-opacity: 1;
-  color: rgb(243 117 33 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.form-steps .form-step[data-step="1"] .peer:checked ~ .peer-checked\:radio-pill-checked.radio-pill {
+.hover\:v2-scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:v2-bg-\[\#F2600B\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 96 11 / var(--tw-bg-opacity));
+}
+
+.hover\:file\:v2-bg-\[\#999898\]::file-selector-button:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(153 152 152 / var(--tw-bg-opacity));
+}
+
+.v2-group:hover .group-hover\:v2-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-  /* ESPECIFICIDADE MÁXIMA */
 }
 
-.peer:focus-visible ~ .peer-focus-visible\:ring-2 {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+.aria-pressed\:v2-scale-105[aria-pressed="true"] {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.peer:focus-visible ~ .peer-focus-visible\:ring-orange-300 {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(253 186 116 / var(--tw-ring-opacity));
+.aria-pressed\:v2-bg-\[\#F2600B\][aria-pressed="true"] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 96 11 / var(--tw-bg-opacity));
 }
 
+.v2-group[aria-pressed="true"] .group-aria-pressed\:v2-text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 
+@media (min-width: 768px) {
+  .md\:v2-mt-2 {
+    margin-top: 0.5rem;
+  }
 
+  .md\:v2-block {
+    display: block;
+  }
 
+  .md\:v2-hidden {
+    display: none;
+  }
+
+  .md\:v2-max-w-\[202px\] {
+    max-width: 202px;
+  }
+
+  .md\:v2-flex-row {
+    flex-direction: row;
+  }
+
+  .md\:v2-flex-col {
+    flex-direction: column;
+  }
+
+  .md\:v2-items-center {
+    align-items: center;
+  }
+
+  .md\:v2-justify-center {
+    justify-content: center;
+  }
+
+  .md\:v2-p-0 {
+    padding: 0px;
+  }
+}
