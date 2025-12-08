@@ -55,7 +55,8 @@
                         <section class="form-step is-active" data-step="1" id="step-1" role="tabpanel" aria-labelledby="tab-step-1">
                             <fieldset class="fieldset fieldset-radio">
                                 <legend class="legend">Você é:</legend>
-                                <div class="radio-options radio-options-horizontal">                                <label class="inline-option">
+                                <div class="radio-options radio-options-horizontal">                                
+                                    <label class="inline-option">
                                         <input class="sr-only peer" type="radio" name="tipo_usuario" value="comprador" required>
                                         <span class="radio-pill peer-checked:radio-pill-checked">Comprador</span>
                                     </label>
@@ -133,22 +134,20 @@
                             <fieldset class="fieldset" id="dados_venda">
                                 <legend class="legend">Dados da Venda</legend>
 
-                                <div class="grid">
-                                    <div>
+                                
+                                    
                                         <label for="valor_moto" class="font-medium">Valor da moto</label>
                                         <input id="valor_moto" inputmode="decimal" class="input" required />
-                                    </div>
 
-                                    <div>
+
+                                    
                                         <label for="valor_entrada" class="font-medium">Valor de entrada</label>
                                         <input id="valor_entrada" inputmode="decimal" class="input" required />
 
-                                    </div>
-                                </div>
 
                                 <!-- Mensagem de erro DENTRO do bloco escuro -->
                                 <p id="erro_dados_venda"
-                                    class="hidden mt-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                                    class="hidden"
                                     role="alert" aria-live="polite"></p>
                             </fieldset>
                         </section>
