@@ -1257,7 +1257,7 @@ export async function enviarFinalAnalise(formFinal) {
       );
 
       const listaMotivos = motivos
-        .map((motivo) => `<li>- ${motivo}</li>`)
+        .map((motivo) => `<li> ${motivo}</li>`)
         .join("");
       mensagemHTML += `<ul class="list-none pl-5">${listaMotivos}<br></ul>`;
 
@@ -1268,15 +1268,15 @@ export async function enviarFinalAnalise(formFinal) {
         if (sugestoes.length == 1) {
           mensagemHTML += `
             <ul class="list-none pl-5">
-            <li>- ${sugestoes[0]}</li>
+            <li> ${sugestoes[0]}</li>
             </ul>
             `;
         } else {
           // sempre mostra duas sugestões unidas por "OU"
           mensagemHTML += `
             <ul class="list-none pl-5">
-            <li>- ${sugestoes[0]} OU</li>
-            <li>- ${sugestoes[1]}</li>
+            <li> ${sugestoes[0]} OU</li>
+            <li> ${sugestoes[1]}</li>
             </ul>
             `;
         }
