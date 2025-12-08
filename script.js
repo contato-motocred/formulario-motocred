@@ -2264,6 +2264,13 @@ export async function enviarFinalAnalise(formFinal) {
       const targetId = stepOrder[index];
       if (targetId) showStepById(targetId);
       currentStep = index;
+      const finalNavPrev = document.querySelector("#form-final .nav-prev");
+      finalNavPrev?.classList.toggle("v2-opacity-0", currentStep === 0);
+      finalNavPrev?.classList.toggle(
+        "v2-pointer-events-none",
+        currentStep === 0
+      );
+
       finalMaxStep = Math.max(finalMaxStep, currentStep);
       updateFinalStepperUI();
     }
