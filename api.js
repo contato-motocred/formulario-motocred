@@ -1,5 +1,5 @@
 const API_URL = "https://api.motocred.digital";
-
+//const API_URL = "http://44.193.130.192:8000"; // !!! APAGAR QUANDO FOR SUBIR
 export async function preAnalysisRequest(data) {
   try {
     const response = await fetch(`${API_URL}/pre-analysis`, {
