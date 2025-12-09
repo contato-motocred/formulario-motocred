@@ -39,6 +39,7 @@ let rendaGlobal = 0;
 let limit40Global = false;
 let lastDownPayment = 0;
 let lastCredit = 0;
+let nomeClienteFromApi = "";
 
 const FINAL_STEP_IDS = [
   "final_dados_cliente",
@@ -58,6 +59,21 @@ const FINAL_PLACEHOLDER_MAP = [
 
 loadInitialFormStorage();
 loadFinalPlaceholderData();
+
+function updateFinalPlaceholderValue(key, value) {
+  if (!key || !value) return;
+  const targetConfig = FINAL_PLACEHOLDER_MAP.find((entry) => entry.key === key);
+  if (targetConfig) {
+    const targetEl = document.querySelector(targetConfig.target);
+    if (targetEl) {
+      targetEl.placeholder = value;
+    }
+  }
+  if (key === "nome") {
+    nomeClienteFromApi = value;
+  }
+  saveFinalPlaceholderData({ [key]: value });
+}
 
 // ENVIO DO FORM FINAL
 export async function enviarFinalAnalise(formFinal) {
@@ -1312,6 +1328,10 @@ export async function enviarFinalAnalise(formFinal) {
       // const result = await postToAppsScript(payload);
       const pre = await preAnalysisRequest(prePayload);
       // const pre = { approved: true, discount_40: false };
+      const nmCliente = pre.name;
+      if (nmCliente) {
+        updateFinalPlaceholderValue("nome", nmCliente);
+      }
 
       // if (result && result.ok) {
       if (pre.approved) {
@@ -1324,6 +1344,7 @@ export async function enviarFinalAnalise(formFinal) {
         setFlowStage(FLOW_STAGES.SIMULACAO);
         openV2AsPage("v2-pagina-aprovado");
         localStorage.setItem("cpfGlobal", payload.cpf);
+        console.log(nmCliente);
       } else {
         // Falha no envio (erro retornado pelo servidor)
         setSubmittingState(false, "Enviar");
@@ -1669,6 +1690,13 @@ export async function enviarFinalAnalise(formFinal) {
       document
         .getElementById("btn-analise-final")
         .classList.add("v2-bg-black/50");
+      document
+        .getElementById("btn-analise-final")
+        .classList.remove("v2-cursor-pointer");
+      document
+        .getElementById("btn-analise-final")
+        .classList.remove("v2-cursor-default");
+
       atualizarValoresParcelasDebounce(financiado); // Esse fica ouvindo os sliders!
       // Relevar botao
     }
@@ -1755,6 +1783,12 @@ export async function enviarFinalAnalise(formFinal) {
         .getElementById("btn-analise-final")
         .classList.remove("v2-bg-black/50");
       document.getElementById("btn-analise-final").classList.add("v2-bg-black");
+      document
+        .getElementById("btn-analise-final")
+        .classList.remove("v2-cursor-default");
+      document
+        .getElementById("btn-analise-final")
+        .classList.add("v2-cursor-pointer");
 
       function atualizarUnicaParcela(botao, valor, chave) {
         if (!parcelasPermitidasCache.includes(chave) || valor === 0) {
@@ -1880,12 +1914,17 @@ export async function enviarFinalAnalise(formFinal) {
     const populateFinalPlaceholders = () => {
       const updates = {};
       FINAL_PLACEHOLDER_MAP.forEach(({ key, source, target }) => {
-        const sourceEl = document.querySelector(source);
         const targetEl = document.querySelector(target);
         if (!targetEl) return;
-        let value = sourceEl?.value?.trim() ?? "";
-        if (!value) {
-          value = getFinalPlaceholderValue(key);
+        let value = "";
+        if (key === "nome" && nomeClienteFromApi) {
+          value = nomeClienteFromApi;
+        } else {
+          const sourceEl = document.querySelector(source);
+          value = sourceEl?.value?.trim() ?? "";
+          if (!value) {
+            value = getFinalPlaceholderValue(key);
+          }
         }
         if (value) {
           targetEl.placeholder = value;
