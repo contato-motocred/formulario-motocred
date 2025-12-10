@@ -1624,10 +1624,9 @@ export async function enviarFinalAnalise(formFinal) {
       total = Math.max(total, HARD_MIN_TOTAL);
       entrada = Math.max(entrada, HARD_MIN_ENTRADA);
       if (entrada > total) {
-        entrada = total;
+        entrada = total - 50;
       }
     }
-
     /**
      * Função Cérebro: Aplica todas as regras de negócio em ordem.
      */
@@ -1648,10 +1647,14 @@ export async function enviarFinalAnalise(formFinal) {
       }
 
       // 2. REGRAS (Hard Mins, Entrada <= Total)
+      const entradaStep = Number(rEntrada.step) || 1;
       total = Math.max(total, HARD_MIN_TOTAL);
-      entrada = Math.max(entrada, HARD_MIN_ENTRADA);
+      entrada = Math.min(
+        entrada,
+        Math.max(HARD_MIN_ENTRADA, total - entradaStep)
+      );
       if (entrada > total) {
-        entrada = total;
+        entrada = Math.max(HARD_MIN_ENTRADA, total - entradaStep);
       }
 
       // 3. REGRA 2: "Financiado nunca pode aumentar" (Trava da PPA)
@@ -1669,7 +1672,7 @@ export async function enviarFinalAnalise(formFinal) {
       total = Math.max(total, HARD_MIN_TOTAL);
       entrada = Math.max(entrada, HARD_MIN_ENTRADA);
       if (entrada > total) {
-        entrada = total;
+        entrada = Math.max(HARD_MIN_ENTRADA, total - entradaStep);
       }
 
       // 5. RECALCULA o financiado final
