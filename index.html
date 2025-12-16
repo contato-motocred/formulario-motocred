@@ -237,17 +237,25 @@
             v2-pt-8 v2-pb-8 v2-pr-8 v2-pl-8">
 
                 <!--QUADRADO BRANCO-->
-        <div class="v2-bg-white v2-rounded-2xl
+        <div class="v2-relative v2-bg-white v2-rounded-2xl
 
                     v2-w-full v2-max-w-2xl v2-min-h-[260px]
                     v2-p-6 v2-flex v2-flex-col v2-items-center v2-justify-start
-                    v2-space-y-10">
+                    ">
                 <!--v2-space-y-16 VERSUS v2-space-y-10 -->
 
             <header class="v2-flex v2-flex-col v2-items-center v2-space-y-3">
                 <img src="imagens/motocred_logo.avif" alt="Logo MotoCred" class="v2-w-80 h-auto">
                 <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B] v2-text-center">Simulação de Financiamento</h1>          
             </header>
+
+            <div class="v2-absolute v2-top-0 v2-left-0 v2-pt-2 v2-pl-2">
+                <button id="btn-reiniciar" class="v2-bg-white v2-rounded-2xl v2-cursor-pointer">
+                    <span class="v2-text-xs v2-text-[#F2600B]">
+                        Reiniciar
+                    </span>
+                </button>
+            </div>
                     <!--ALERTA 50%
             <div id="alert-entrada-50" class="entrada-alert v2-top-20 v2-right-2 v2-p-3 v2-bg-white v2-rounded-2xl v2-rounded-tr-none v2-border-2 v2-border-[#F2600B] v2-flex v2-items-start v2-gap-3 v2-relative" role="status" aria-live="assertive">
                 <div class="entrada-alert__title v2-text-sm">Entrada de 50%</div>
@@ -255,11 +263,11 @@
                 <button type="button" class="entrada-alert__close" aria-label="Fechar aviso">&times;</button>
             </div> -->
           
-            <main class="v2-flex v2-flex-col v2-items-left v2-space-y-16 v2-w-full v2-pb-6">
+            <main class="v2-flex v2-flex-col v2-items-left v2-space-y-10 v2-w-full v2-pb-6">
                     <!--v2-items-left VERSUS v2-items-center ||  v2-space-y-16 VERSUS v2-space-y-10 -->
 
                     <!--MENSAGEM DE APROVADO-->
-                    <div class="v2-relative v2-mt-4 v2-w-full 
+                    <div class="v2-relative v2-mt-8 v2-w-full 
                                 v2-bg-[#0CAD11]/15 
                                 v2-rounded-[10px] 
                                 v2-border-solid
@@ -437,7 +445,7 @@
         <!--FIM PAGINA SIMULAÇÃO-->
                 
         
-    <section id="form-final" class="v2-wrapper v2-flex v2-flex-col v2-items-center v2-justify-center v2-w-full v2-p-6 v2-bg-[#D9D9D9] v2-min-h-screen">
+    <section id="form-final" class="v2-wrapper v2-w-full v2-p-6 v2-bg-[#D9D9D9] v2-min-h-screen">
          <div class="v2-relative v2-bg-white v2-rounded-2xl
 
                     v2-w-full v2-max-w-2xl v2-min-h-[260px]
@@ -450,7 +458,7 @@
                 <h1 class="v2-text-2xl v2-font-medium v2-text-[#F2600B] v2-text-center">Formulário de Financiamento</h1>          
             </header>
 
-             <div class="v2-absolute v2-top-0 v2-left-0 v2-pt-2 v2-pl-2">
+            <div class="v2-absolute v2-top-0 v2-left-0 v2-pt-2 v2-pl-2">
                 <button id="btn-reiniciar" class="v2-bg-white v2-rounded-2xl v2-cursor-pointer">
                     <span class="v2-text-xs v2-text-[#F2600B]">
                         Reiniciar
