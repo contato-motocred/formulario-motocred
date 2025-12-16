@@ -1045,26 +1045,41 @@ body.v2-mode {
 #form-final .nav-prev {
   background-color: #fff;
   color: #000;
-  border-color: #000;
+  border-top: 1px solid #6b7280;
+  border-right: 1px solid #6b7280;
+  border-bottom: 1px solid #6b7280;
+  border-left: 1px solid #6b7280;
 }
 
 #form-final .nav-next {
   background-color: #000;
   color: #fff;
+  border: none;
 }
 
 #form-final footer p {
   text-align: center;
 }
 
+#btn-reiniciar {
+  border-top: 1px solid #f2600b;
+  border-right: 1px solid #f2600b;
+  border-bottom: 1px solid #f2600b;
+  border-left: 1px solid #f2600b;
+}
+
 /* TA DANDO ALGUM BUG COM AS CORES DAS BORDAS ENTAO TO DEFININDO AQUI */
 
-/* #form-final input["text"] {
-    border-top: 1px solid #6b7280;
-    border-right: 1px solid #6b7280;
-    border-bottom: 1px solid #6b7280;
-    border-left: 1px solid #6b7280;
-  } */
+#form-final input {
+  border-top: 1px solid #6b7280;
+  border-right: 1px solid #6b7280;
+  border-bottom: 1px solid #6b7280;
+  border-left: 1px solid #6b7280;
+}
+
+#form-final input[type="file"] {
+  border: none;
+}
 
 /* ================================ */
 
@@ -1344,12 +1359,20 @@ body.v2-mode {
   top: -0.75rem;
 }
 
+.v2-left-0 {
+  left: 0px;
+}
+
 .v2-left-6 {
   left: 1.5rem;
 }
 
 .v2-right-2 {
   right: 0.5rem;
+}
+
+.v2-top-0 {
+  top: 0px;
 }
 
 .v2-top-20 {
@@ -1382,6 +1405,14 @@ body.v2-mode {
 
 .v2-mt-4 {
   margin-top: 1rem;
+}
+
+.v2-mt-6 {
+  margin-top: 1.5rem;
+}
+
+.v2-mt-8 {
+  margin-top: 2rem;
 }
 
 .v2-inline {
@@ -1663,9 +1694,19 @@ body.v2-mode {
   padding-right: 0.5rem;
 }
 
+.v2-px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .v2-py-0\.5 {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+}
+
+.v2-py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .v2-pb-14 {
@@ -1686,6 +1727,10 @@ body.v2-mode {
 
 .v2-pl-14 {
   padding-left: 3.5rem;
+}
+
+.v2-pl-2 {
+  padding-left: 0.5rem;
 }
 
 .v2-pl-4 {
