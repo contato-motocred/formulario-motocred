@@ -56,7 +56,7 @@ function realizarCalculoPPA(valorMoto, entrada, renda) {
     const valorFinanciado = valorMoto - entrada;
     
     // Teste 1: Entrada mínima de R$ 4.000,00
-    /*if (entrada < 4000) {
+    if (entrada < 4000) {
         falhas.push('ENTRADA_MIN_4000');
     }
     
@@ -75,7 +75,7 @@ function realizarCalculoPPA(valorMoto, entrada, renda) {
     const parcela36 = (valorTotal * 2.44) / 36;
     if (parcela36 > renda / 3) {
         falhas.push('RENDA_INSUFICIENTE');
-    }*/
+    }
 
     return falhas;
 }
