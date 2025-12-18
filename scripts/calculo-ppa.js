@@ -12,35 +12,35 @@
  * Calcula o Valor Total do Financiamento (Valor Financiado + Taxas Fixas).
  */
 function calcularValorTotal(valorFinanciado) {
-    if (valorFinanciado <= 5000) {
-        return valorFinanciado + 770;
-    } else if (valorFinanciado > 5000 && valorFinanciado <= 7000) {
-        return valorFinanciado + 820;
-    } else if (valorFinanciado > 7000 && valorFinanciado <= 10000) {
-        return valorFinanciado + 870;
-    } else {
-        return valorFinanciado + 920;
-    }
+  if (valorFinanciado <= 5000) {
+    return valorFinanciado + 770;
+  } else if (valorFinanciado > 5000 && valorFinanciado <= 7000) {
+    return valorFinanciado + 820;
+  } else if (valorFinanciado > 7000 && valorFinanciado <= 10000) {
+    return valorFinanciado + 870;
+  } else {
+    return valorFinanciado + 920;
+  }
 }
 
 /**
  * Calcula o Valor Máximo de Crédito que pode ser financiado com base na Renda.
  */
 function calcularValorMaximo(renda) {
-    const parcelaMaxima = renda / 3;
-    const taxas = [
-        { limite: 5000, taxa: 770 },
-        { limite: 7000, taxa: 820 },
-        { limite: 10000, taxa: 870 },
-        { limite: Infinity, taxa: 920 }
-    ];
-    for (const { limite, taxa } of taxas) {
-        const valor = (parcelaMaxima * 36 / 2.44) - taxa;
-        if (valor <= limite) {
-            return Math.max(valor, 0);
-        }
+  const parcelaMaxima = renda / 3;
+  const taxas = [
+    { limite: 5000, taxa: 770 },
+    { limite: 7000, taxa: 820 },
+    { limite: 10000, taxa: 870 },
+    { limite: Infinity, taxa: 920 },
+  ];
+  for (const { limite, taxa } of taxas) {
+    const valor = (parcelaMaxima * 36) / 2.44 - taxa;
+    if (valor <= limite) {
+      return Math.max(valor, 0);
     }
-    return 0;
+  }
+  return 0;
 }
 
 // ----------------------------------------------------------------------
@@ -52,32 +52,33 @@ function calcularValorMaximo(renda) {
  * @returns {string[]} Um array de códigos de erro. Retorna um array vazio se for aprovado.
  */
 function realizarCalculoPPA(valorMoto, entrada, renda) {
-    const falhas = [];
-    const valorFinanciado = valorMoto - entrada;
-    
-    // Teste 1: Entrada mínima de R$ 4.000,00
-    if (entrada < 4000) {
-        falhas.push('ENTRADA_MIN_4000');
-    }
-    
-    // Teste 2: Entrada mínima de 40% do valor da moto
-    if (entrada < valorMoto * 0.40) {
-        falhas.push('ENTRADA_MIN_40_PCT');
-    }
-    
-    // Teste 3: Limite de crédito de R$ 12.000,00
-    if (valorFinanciado > 12000) {
-        falhas.push('CREDITO_MAX_12000');
-    }
-    
-    // Teste 4: Comprometimento de 1/3 da renda
-    const valorTotal = calcularValorTotal(valorFinanciado);
-    const parcela36 = (valorTotal * 2.44) / 36;
-    if (parcela36 > renda / 3) {
-        falhas.push('RENDA_INSUFICIENTE');
-    }
+  const falhas = [];
+  const valorFinanciado = valorMoto - entrada;
 
-    return falhas;
+  // Teste 1: Entrada mínima de R$ 4.000,00
+  // if (entrada < 4000) {
+  //     falhas.push('ENTRADA_MIN_4000');
+  // }
+
+  // Teste 2: Entrada mínima de 40% do valor da moto
+  if (entrada < valorMoto * 0.1) {
+    falhas.push("ENTRADA_MIN_10_PCT");
+  }
+  // ENTRADA_MIN_40_PCT
+
+  // Teste 3: Limite de crédito de R$ 12.000,00
+  // if (valorFinanciado > 12000) {
+  //   falhas.push("CREDITO_MAX_12000");
+  // }
+
+  // Teste 4: Comprometimento de 1/3 da renda
+  const valorTotal = calcularValorTotal(valorFinanciado);
+  //   const parcela36 = (valorTotal * 2.44) / 36;
+  //   if (parcela36 > renda / 3) {
+  //     falhas.push("RENDA_INSUFICIENTE");
+  //   }
+
+  return falhas;
 }
 
 // ----------------------------------------------------------------------
@@ -90,14 +91,15 @@ function realizarCalculoPPA(valorMoto, entrada, renda) {
  * @returns {string[]} Um array com os textos dos motivos.
  */
 function obterMotivosDeReprovacao(codigosDeFalha) {
-    const mapaDeMotivos = {
-        'ENTRADA_MIN_4000': "Entrada mínima de R$ 4.000,00 não atingida.",
-        'ENTRADA_MIN_40_PCT': "Entrada menor que 40% do valor da moto.",
-        'CREDITO_MAX_12000': "Crédito solicitado acima do limite de R$ 12.000,00.",
-        'RENDA_INSUFICIENTE': "A parcela estimada excede 1/3 da sua renda."
-    };
+  const mapaDeMotivos = {
+    // 'ENTRADA_MIN_4000': "Entrada mínima de R$ 4.000,00 não atingida.",
+    // 'ENTRADA_MIN_40_PCT': "Entrada menor que 40% do valor da moto.",
+    ENTRADA_MIN_10_PCT: "Entrada menor que 10% do valor da moto.",
+    // CREDITO_MAX_12000: "Crédito solicitado acima do limite de R$ 12.000,00.",
+    // RENDA_INSUFICIENTE: "A parcela estimada excede 1/3 da sua renda.",
+  };
 
-    return codigosDeFalha.map(codigo => mapaDeMotivos[codigo]);
+  return codigosDeFalha.map((codigo) => mapaDeMotivos[codigo]);
 }
 
 // ----------------------------------------------------------------------
@@ -113,49 +115,75 @@ function obterMotivosDeReprovacao(codigosDeFalha) {
  * @returns {string[]} Um array com os textos das sugestões.
  */
 function calcularSugestoes(codigosDeFalha, valorMoto, entrada, renda) {
-    const sugestoes = [];
-    const formatBRL = (num) => num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    
-    const falhaDeCreditoOuRenda = codigosDeFalha.includes('RENDA_INSUFICIENTE') || codigosDeFalha.includes('CREDITO_MAX_12000');
-    const falhaDeEntrada = codigosDeFalha.includes('ENTRADA_MIN_4000') || codigosDeFalha.includes('ENTRADA_MIN_40_PCT');
+  const sugestoes = [];
+  const formatBRL = (num) =>
+    num.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-    // Cenário 1: Falha por renda ou limite de crédito (estas sugestões têm prioridade)
-    if (falhaDeCreditoOuRenda) {
-        let valorMaximoFinanciavel = Math.min(calcularValorMaximo(renda), 12000);
-        
-        // Sugestão de aumentar a entrada
-        const novaEntradaSugerida = valorMoto - valorMaximoFinanciavel;
-        if (novaEntradaSugerida > entrada) {
-            sugestoes.push(`Aumente sua entrada para pelo menos <b>${formatBRL(novaEntradaSugerida)}</b>.`);
-        }
-        
-        // Sugestão de escolher uma moto mais barata
-        const novaMotoSugerida = entrada + valorMaximoFinanciavel;
-        if (novaMotoSugerida < valorMoto) {
-            sugestoes.push(`Escolha uma moto de até <b>${formatBRL(novaMotoSugerida)}</b> (mantendo a entrada atual).`);
-        }
+  // const falhaDeCreditoOuRenda =
+  //   codigosDeFalha.includes("RENDA_INSUFICIENTE") ||
+  //   codigosDeFalha.includes("CREDITO_MAX_12000");
+  // // const falhaDeEntrada = codigosDeFalha.includes('ENTRADA_MIN_4000') || codigosDeFalha.includes('ENTRADA_MIN_40_PCT');
+  const falhaDeEntrada = codigosDeFalha.includes("ENTRADA_MIN_10_PCT");
 
-    // Cenário 2: Falha APENAS por regras de entrada
-    } else if (falhaDeEntrada) {
-        const entradaMinimaPercentual = valorMoto * 0.40;
-        const entradaMinimaRequerida = Math.max(entradaMinimaPercentual, 4000);
-        
-        if (entradaMinimaRequerida > entrada) {
-            sugestoes.push(`Aumente sua entrada para pelo menos <b>${formatBRL(entradaMinimaRequerida)}</b>.`);
-        }
-        
-        // Esta sugestão só faz sentido se a entrada for menor que 40%
-        if (codigosDeFalha.includes('ENTRADA_MIN_40_PCT')) {
-             const motoMaximaComEntrada = entrada / 0.40;
-             if (motoMaximaComEntrada < valorMoto) {
-                sugestoes.push(`Escolha uma moto de até <b>${formatBRL(motoMaximaComEntrada)}</b> (mantendo a entrada atual).`);
-             }
-        }
+  // // Cenário 1: Falha por renda ou limite de crédito (estas sugestões têm prioridade)
+  // if (falhaDeCreditoOuRenda) {
+  //   let valorMaximoFinanciavel = Math.min(calcularValorMaximo(renda), 12000);
+
+  //   // Sugestão de aumentar a entrada
+  //   const novaEntradaSugerida = valorMoto - valorMaximoFinanciavel;
+  //   if (novaEntradaSugerida > entrada) {
+  //     sugestoes.push(
+  //       `Aumente sua entrada para pelo menos <b>${formatBRL(
+  //         novaEntradaSugerida
+  //       )}</b>.`
+  //     );
+  //   }
+
+  //   // Sugestão de escolher uma moto mais barata
+  //   const novaMotoSugerida = entrada + valorMaximoFinanciavel;
+  //   if (novaMotoSugerida < valorMoto) {
+  //     sugestoes.push(
+  //       `Escolha uma moto de até <b>${formatBRL(
+  //         novaMotoSugerida
+  //       )}</b> (mantendo a entrada atual).`
+  //     );
+  //   }
+
+  // Cenário 2: Falha APENAS por regras de entrada
+  //} else if
+  if (falhaDeEntrada) {
+    const entradaMinimaPercentual = valorMoto * 0.1;
+    const valorMaximoMoto = entrada * 10;
+    // const entradaMinimaRequerida = Math.max(entradaMinimaPercentual, 4000);
+
+    if (entradaMinimaPercentual > entrada) {
+      sugestoes.push(
+        `Aumente sua entrada para pelo menos <b>${formatBRL(
+          entradaMinimaPercentual
+        )}</b>.`
+      );
+      sugestoes.push(
+        `Escolha uma moto de até <b>${formatBRL(
+          valorMaximoMoto
+        )}</b> (mantendo a entrada atual).`
+      );
     }
 
-    return sugestoes;
-}
+    //Esta sugestão só faz sentido se a entrada for menor que 40%
+    // if (codigosDeFalha.includes("ENTRADA_MIN_10_PCT")) {
+    //   const motoMaximaComEntrada = entrada / 0.1;
+    //   if (motoMaximaComEntrada < valorMoto) {
+    //     sugestoes.push(
+    //       `Escolha uma moto de até <b>${formatBRL(
+    //         motoMaximaComEntrada
+    //       )}</b> (mantendo a entrada atual).`
+    //     );
+    //   }
+    // }
+  }
 
+  return sugestoes;
+}
 
 /**
  * Helper para limpar e converter o valor de um input para número.
@@ -163,9 +191,9 @@ function calcularSugestoes(codigosDeFalha, valorMoto, entrada, renda) {
  * @returns {number} O valor numérico.
  */
 const cleanAndParse = (inputElement) => {
-    if (!inputElement || !inputElement.value) return 0;
-    const rawValue = inputElement.value;
-    const noThousands = rawValue.replace(/\./g, '');
-    const cleanValue = noThousands.replace(',', '.');
-    return parseFloat(cleanValue) || 0;
+  if (!inputElement || !inputElement.value) return 0;
+  const rawValue = inputElement.value;
+  const noThousands = rawValue.replace(/\./g, "");
+  const cleanValue = noThousands.replace(",", ".");
+  return parseFloat(cleanValue) || 0;
 };
