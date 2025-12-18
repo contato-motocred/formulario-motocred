@@ -1,30 +1,22 @@
 const API_URL = "https://api.motocred.digital";
 //const API_URL = "http://44.193.130.192:8000"; // !!! APAGAR QUANDO FOR SUBIR
 export async function preAnalysisRequest(data) {
-  try {
-    const response = await fetch(`${API_URL}/pre-analysis`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        cpf: data.cpf,
-        email: data.email,
-        phone: data.phone,
-        income: data.income,
-        down_payment: data.down_payment,
-        credit: data.credit,
-        seller: data.seller,
-        dealership: data.dealership,
-      }),
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return await response.json();
-    // { "approved": true, "down_payment_40": true, "installment_12": 0, "installment_24": 0, "installment_36": 0 }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return null;
-  }
+  const response = await fetch(`${API_URL}/pre-analysis`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      cpf: data.cpf,
+      email: data.email,
+      phone: data.phone,
+      income: data.income,
+      down_payment: data.down_payment,
+      credit: data.credit,
+      seller: data.seller,
+      dealership: data.dealership,
+    }),
+  });
+  return response;
+  // { "approved": true, "down_payment_40": true, "installment_12": 0, "installment_24": 0, "installment_36": 0 }
 }
 
 export async function calculateLoanRequest(data) {

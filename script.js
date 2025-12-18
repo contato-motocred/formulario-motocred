@@ -562,6 +562,7 @@ export async function enviarFinalAnalise(formFinal) {
   // ? escreve a mensagem no #erro_dados_venda, igual à PPA
   const updateValorEntradaValidity = (showMessage = false) => {
     const erroArea = document.getElementById("erro_dados_venda");
+    const erroMSG = "";
     if (!valorEntradaInput || !erroArea) return true;
 
     // limpa a área antes de validar
@@ -598,6 +599,31 @@ export async function enviarFinalAnalise(formFinal) {
       if (showMessage) {
         erroArea.innerHTML =
           "O valor da entrada não pode ser igual ao valor da moto.";
+        erroArea.classList.remove("hidden");
+      }
+      return false;
+    }
+
+    if (erroMSG == "contato") {
+      if (showMessage) {
+        erroArea.innerHTML =
+          "Houve um erro com o servidor. Entre em contato conosco.";
+        erroArea.classList.remove("hidden");
+      }
+      return false;
+    }
+
+    if (erroMSG == "ServerError") {
+      if (showMessage) {
+        erroArea.innerHTML = "CPF não encontrado.";
+        erroArea.classList.remove("hidden");
+      }
+      return false;
+    }
+
+    if (erroMSG == "comunicacao") {
+      if (showMessage) {
+        erroArea.innerHTML = "Erro de conexão com rede.";
         erroArea.classList.remove("hidden");
       }
       return false;
@@ -738,31 +764,6 @@ export async function enviarFinalAnalise(formFinal) {
       step.setAttribute("aria-hidden", shouldHide ? "true" : "false");
     });
   };
-
-  // function showConfirmacao() {
-  //   // liga o estado global
-  //   document.body.classList.add("confirmado");
-
-  //   // mostra a seção (se ela começa .hidden no HTML)
-  //   const confirma = document.getElementById("tela_confirmacao");
-  //   if (confirma) {
-  //     confirma.classList.remove("hidden");
-  //     confirma.setAttribute("tabindex", "-1");
-  //     confirma.focus({ preventScroll: false });
-  //   }
-
-  //   // opcional: travar interação do resto
-  //   document
-  //     .querySelectorAll("input, select, textarea, button")
-  //     .forEach((el) => {
-  //       if (!confirma || !confirma.contains(el)) {
-  //         el.disabled = true;
-  //         el.setAttribute("aria-disabled", "true");
-  //       }
-  //     });
-  // }
-
-  // Em script.js
 
   const renderNavigation = () => {
     // Habilita/desabilita o botão Voltar
@@ -1326,7 +1327,9 @@ export async function enviarFinalAnalise(formFinal) {
 
     try {
       // const result = await postToAppsScript(payload);
-      const pre = await preAnalysisRequest(prePayload);
+      const resp = await preAnalysisRequest(prePayload);
+      const pre = await resp.json();
+
       // const pre = { approved: true, discount_40: false };
       const nmCliente = pre.name;
       if (nmCliente) {
@@ -1352,10 +1355,19 @@ export async function enviarFinalAnalise(formFinal) {
         return;
       }
     } catch (err) {
-      // Falha de comunicação (rede, etc.)
-      console.error("Erro na comunicação com Apps Script:", err);
-      alert("Ocorreu um erro na comunicação. Tente novamente.");
-      setSubmittingState(false, "Enviar");
+      const erroMSG = "";
+      if (err.type == "ServerError") {
+        // Mensagem na tela de entrar em contato
+        erroMSG = "ServerError";
+      } else if (err.type == "SerasaNotFoundError") {
+        // Dizer que cpf nao foi encontrado
+        erroMSG = "SerasaNotFoundError";
+      } else {
+        erroMSG = "comunicacao";
+        // Falha de comunicação (rede, etc.)
+        console.error("Erro na comunicação com backend:", err);
+      }
+      updateValorEntradaValidity(false);
     }
   });
 
