@@ -475,7 +475,7 @@ export async function enviarFinalAnalise(formFinal) {
   const calculateValorEntradaMinimo = () => {
     const vm = numFromInput(valorMotoInput);
     const positive = Number.isFinite(vm) && vm > 0 ? vm : 0;
-    const minimo = positive * 0.4;
+    const minimo = positive * 0.1;
     return Math.floor(minimo * 100) / 100;
   };
 
@@ -483,9 +483,9 @@ export async function enviarFinalAnalise(formFinal) {
     if (!valorMotoInput || !valorEntradaInput) return;
 
     let minimo = calculateValorEntradaMinimo();
-    if (minimo < 4000) {
-      minimo = 4000;
-    }
+    // if (minimo < 4000) {
+    //   minimo = 4000;
+    // }
     const formatted = minimo.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -739,28 +739,28 @@ export async function enviarFinalAnalise(formFinal) {
     });
   };
 
-  function showConfirmacao() {
-    // liga o estado global
-    document.body.classList.add("confirmado");
+  // function showConfirmacao() {
+  //   // liga o estado global
+  //   document.body.classList.add("confirmado");
 
-    // mostra a seção (se ela começa .hidden no HTML)
-    const confirma = document.getElementById("tela_confirmacao");
-    if (confirma) {
-      confirma.classList.remove("hidden");
-      confirma.setAttribute("tabindex", "-1");
-      confirma.focus({ preventScroll: false });
-    }
+  //   // mostra a seção (se ela começa .hidden no HTML)
+  //   const confirma = document.getElementById("tela_confirmacao");
+  //   if (confirma) {
+  //     confirma.classList.remove("hidden");
+  //     confirma.setAttribute("tabindex", "-1");
+  //     confirma.focus({ preventScroll: false });
+  //   }
 
-    // opcional: travar interação do resto
-    document
-      .querySelectorAll("input, select, textarea, button")
-      .forEach((el) => {
-        if (!confirma || !confirma.contains(el)) {
-          el.disabled = true;
-          el.setAttribute("aria-disabled", "true");
-        }
-      });
-  }
+  //   // opcional: travar interação do resto
+  //   document
+  //     .querySelectorAll("input, select, textarea, button")
+  //     .forEach((el) => {
+  //       if (!confirma || !confirma.contains(el)) {
+  //         el.disabled = true;
+  //         el.setAttribute("aria-disabled", "true");
+  //       }
+  //     });
+  // }
 
   // Em script.js
 
@@ -1781,7 +1781,7 @@ export async function enviarFinalAnalise(formFinal) {
       atualizarUnicaParcela(btn24x, loan.installment_24, "24x");
       atualizarUnicaParcela(btn36x, loan.installment_36, "36x");
       console.log("Botao revelado");
-      document.getElementById("btn-analise-final").disabled = false;
+      //document.getElementById("btn-analise-final").disabled = false;
       document
         .getElementById("btn-analise-final")
         .classList.remove("v2-bg-black/50");
