@@ -558,6 +558,16 @@
     display: none !important;
   }
 
+  .v1-shell .checkbox-container {
+    display: flex;
+    align-items: center; /* garante alinhamento vertical */
+    gap: 6px;
+  }
+
+  .v1-shell .checkbox-container label {
+    cursor: pointer;
+  }
+
   /* WRAPPER PARA TIRAR DESIGN DO BODY NA V2*/
   /* no final do styles.css */
   /* no final do styles.css */

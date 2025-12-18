@@ -73,6 +73,7 @@
                             <fieldset class="fieldset" id="dados_vendedor">
                                 <legend class="legend">Dados do Vendedor</legend>
 
+
                                 <label for="loja">Loja/Concessionária:</label>
                                 <select class="input" id="loja" name="loja" required>
                                     <option value="">Selecione</option>
@@ -152,7 +153,28 @@
                                 <p id="erro_dados_venda"
                                     class="hidden"
                                     role="alert" aria-live="polite"></p>
+
+                                
+                                <div class="checkbox-container">
+                                    <input
+                                        type="checkbox"
+                                        id="aceito-termos"
+                                        name="aceito-termos"
+                                        required
+                                    />
+
+                                    <label for="aceito-termos">
+                                        <p>
+                                            Clique
+                                            <a href="https://rodrps.github.io/politica-de-privacidade/" target="_blank">
+                                            aqui
+                                            </a>
+                                            &nbsp;para acessar nossa política de privacidade.
+                                        </p>
+                                    </label>
+                                </div>
                             </fieldset>
+                            
                         </section>
                     </div>
 
