@@ -1673,11 +1673,7 @@ export async function enviarFinalAnalise(formFinal) {
       let financiadoAtual = total - entrada;
 
       if (financiadoAtual > MAX_FINANCIADO_PERMITIDO) {
-        if (source === "total" || source === "span-total") {
-          entrada = total - MAX_FINANCIADO_PERMITIDO;
-        } else {
-          total = entrada + MAX_FINANCIADO_PERMITIDO;
-        }
+        entrada = Math.max(HARD_MIN_ENTRADA, total - MAX_FINANCIADO_PERMITIDO);
       }
 
       // 4. RE-VALIDAÇÃO
