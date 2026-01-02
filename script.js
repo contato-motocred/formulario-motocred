@@ -1689,6 +1689,11 @@ export async function enviarFinalAnalise(formFinal) {
       // 6. Chama a UI para atualizar a tela
       updateUI(total, entrada, financiado);
 
+      // 🔒 FIX: persiste a entrada corrigida como verdade
+      if (source === "init") {
+        setInitialPPA(total, entrada);
+      }
+
       // !! MUDANÇA !!
       // Apenas atualiza os valores (chamando a futura API de valores)
 
