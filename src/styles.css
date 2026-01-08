@@ -562,8 +562,9 @@
   /* no final do styles.css */
   /* no final do styles.css */
   .v2-wrapper {
-    display: block;
+    display: flex;
     font-family: Inter, system-ui, sans-serif;
+    justify-content: center;
     /* color: #111 !important; */
   }
   .v2-wrapper,
@@ -580,9 +581,11 @@
   /* Quando o body estiver em modo V2, zera o estilo global dele */
   body.v2-mode {
     background: transparent !important;
+    justify-content: center !important;
     color: initial !important;
     padding: 0 !important;
     display: block !important;
+    background-color: #d9d9d9 !important;
   }
 
   /* ========= Range V2 (puro CSS) ========= */
@@ -651,29 +654,20 @@
   }
 
   /* ============================================================= */
-  /* ?? Correção: restabelece o escopo visual da V2 (Form Final)   */
-  /* ============================================================= */
 
-  body.v2-mode {
-    background-color: #d9d9d9 !important;
+  /* #form-final.v2-wrapper {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start; 
+    min-height: 100vh;
+    background-color: #d9d9d9;
   }
 
-  #form-final.v2-wrapper {
-    position: relative; /* ? não fixo */
-    min-height: 100vh; /* altura mínima da viewport */
-    background-color: #d9d9d9 !important;
-    font-family: Inter, system-ui, sans-serif;
-    color: #111;
-    overflow-y: auto; /* ? permite rolagem */
-    overflow-x: hidden;
-    z-index: 1; /* só pra manter acima do fundo */
-  }
-
-  /* Força o Tailwind prefixado (v2-) a prevalecer dentro do form */
   #form-final.v2-wrapper * {
     font-family: inherit !important;
     box-sizing: border-box !important;
-  }
+    justify-content: center;
+  } */
 
   #form-final .nav-prev {
     background-color: #fff;
@@ -694,7 +688,13 @@
     text-align: center;
   }
 
-  #btn-reiniciar {
+  #btn-reiniciar-simulacao {
+    border-top: 1px solid #f2600b;
+    border-right: 1px solid #f2600b;
+    border-bottom: 1px solid #f2600b;
+    border-left: 1px solid #f2600b;
+  }
+  #btn-reiniciar-formfinal {
     border-top: 1px solid #f2600b;
     border-right: 1px solid #f2600b;
     border-bottom: 1px solid #f2600b;

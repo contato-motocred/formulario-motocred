@@ -1685,11 +1685,7 @@ export async function enviarFinalAnalise(formFinal) {
       let financiadoAtual = total - entrada;
 
       if (financiadoAtual > MAX_FINANCIADO_PERMITIDO) {
-        if (source === "total" || source === "span-total") {
-          entrada = total - MAX_FINANCIADO_PERMITIDO;
-        } else {
-          total = entrada + MAX_FINANCIADO_PERMITIDO;
-        }
+        entrada = Math.max(HARD_MIN_ENTRADA, total - MAX_FINANCIADO_PERMITIDO);
       }
 
       // 4. RE-VALIDAÇÃO
@@ -1704,6 +1700,11 @@ export async function enviarFinalAnalise(formFinal) {
 
       // 6. Chama a UI para atualizar a tela
       updateUI(total, entrada, financiado);
+
+      // 🔒 FIX: persiste a entrada corrigida como verdade
+      if (source === "init") {
+        setInitialPPA(total, entrada);
+      }
 
       // !! MUDANÇA !!
       // Apenas atualiza os valores (chamando a futura API de valores)
@@ -1923,20 +1924,25 @@ export async function enviarFinalAnalise(formFinal) {
   if (document.getElementById("v2-pagina-aprovado")) {
     initSimuladorV2();
   }
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".v2-btnreiniciar");
+    if (!btn) return;
+
+    console.log("btn-reiniciar clicado");
+
+    resetFlowState();
+    localStorage.clear();
+    sessionStorage.clear();
+    location.reload();
+  });
+
   // ============================
   // FORM FINAL - NAVEGAÇÃO E EXIBIÇÃO (com persistência)
   // ============================
   window.addEventListener("DOMContentLoaded", () => {
     const btnAnaliseFinal = document.getElementById("btn-analise-final");
     const finalTabs = Array.from(document.querySelectorAll(".final-step-tab"));
-    const btnReiniciar = document.getElementById("btn-reiniciar");
-
-    btnReiniciar?.addEventListener("click", () => {
-      resetFlowState();
-      localStorage.clear();
-      sessionStorage.clear();
-      location.reload();
-    });
 
     const populateFinalPlaceholders = () => {
       const updates = {};
@@ -2002,8 +2008,8 @@ export async function enviarFinalAnalise(formFinal) {
         }
 
         ensureFinalStepVisible(targetStepId);
-        populateFinalPlaceholders();
         window.MotoCredFlow?.restoreFinalFormData?.();
+        populateFinalPlaceholders();
         document.dispatchEvent(
           new CustomEvent("finalStepJump", { detail: targetStepId })
         );
