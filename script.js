@@ -63,15 +63,39 @@ loadFinalPlaceholderData();
 function updateFinalPlaceholderValue(key, value) {
   if (!key || !value) return;
   const targetConfig = FINAL_PLACEHOLDER_MAP.find((entry) => entry.key === key);
-  if (targetConfig) {
-    const targetEl = document.querySelector(targetConfig.target);
-    if (targetEl) {
-      targetEl.placeholder = value;
+  if (!targetConfig) return;
+
+  const targetEl = document.querySelector(targetConfig.target);
+  if (!targetEl) return;
+
+  // sempre mantém placeholder como fallback visual
+  targetEl.placeholder = value;
+
+  if (key === "nome") {
+    // ✅ API é a fonte de verdade
+    nomeClienteFromApi = value;
+
+    // ✅ sobrescreve no Form Final (a menos que você marque edição manual lá)
+    if (targetEl.dataset.userEdited !== "true") {
+      targetEl.value = value;
+    }
+
+    // ✅ (recomendado) mantém o formulário inicial consistente também
+    const sourceEl = document.querySelector("#nome_cliente");
+    if (sourceEl && sourceEl.value !== value) {
+      sourceEl.value = value;
+
+      // se você tem persistência do form inicial, grave também:
+      // (você já importa saveInitialFormFieldValue no topo do script)
+      saveInitialFormFieldValue("nome_cliente", value);
+    }
+  } else {
+    // outros campos: só setar value se estiver vazio (pra não atropelar edição)
+    if (!targetEl.value || targetEl.value.trim() === "") {
+      targetEl.value = value;
     }
   }
-  if (key === "nome") {
-    nomeClienteFromApi = value;
-  }
+
   saveFinalPlaceholderData({ [key]: value });
 }
 
