@@ -1,4 +1,4 @@
-const API_URL = "https://api.motocred.digital";
+const API_URL = "https://api2.motocred.digital";
 //const API_URL = "http://44.193.130.192:8000"; // !!! APAGAR QUANDO FOR SUBIR
 export async function preAnalysisRequest(data) {
   try {
